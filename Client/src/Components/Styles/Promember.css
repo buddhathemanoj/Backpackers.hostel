@@ -1,0 +1,143 @@
+.membership-join {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 19px;
+    margin-left: 10%;
+    margin-right: 10%;
+    overflow-x: hidden;
+  }
+  
+  .card {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    height: 800px;
+    width: 480px;
+    box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .card h3 {
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    margin-bottom: 20px;
+  }
+  
+  /* .card button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+   */
+  .Procardimg{
+    margin: -28px 8px 0 0;
+    width: 432px;
+    height: 260px;
+    padding: 0px;
+  }
+
+  .promembtn{
+    border-color: rgba(255, 255, 255, 0.534);
+    box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
+    background-color: yellow;
+    height: 43px;
+    width: 220px;
+    margin-left: -2%;
+  }
+
+
+
+  @media only screen and  (max-width:1200px){
+    .membership-join {
+     overflow: hidden;
+    
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    
+     margin-left: 15%;
+   
+    }
+
+    .card {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      height: 830px;
+      width: 720px;
+      box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
+      transition: transform 0.3s ease-in-out;
+    }
+      
+  .Procardimg{
+    margin: -28px 8px 15px 15px;
+    width: 632px;
+    height: 360px;
+    padding: 0px;
+  }
+
+  .promembtn{
+   
+    height: 43px;
+    width: 220px;
+    margin-left: 32%;
+  }
+  }
+
+  @media only screen and (min-width:1210px) {
+    .membership-join {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 19px;
+      margin-left: 100px;
+      margin-right: 100px;
+    }
+    
+    .membership-join {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+     
+      margin-left: 85px;
+      margin-right: 85px;
+    }
+    
+    .card {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      height: 800px;
+      width: 426px;
+      box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
+      transition: transform 0.3s ease-in-out;
+    }
+  
+    .card h3 {
+      margin-bottom: 10px;
+    }
+    
+    .card p {
+      margin-bottom: 20px;
+      
+     
+    }
+    
+
+    
+    .Procardimg{
+      margin: -28px 8px 0 0;
+      width: 422px;
+      height: 260px;
+      padding: 0px;
+    }
+  
+   
+  
+
+  }

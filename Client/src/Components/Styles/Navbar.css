@@ -1,0 +1,135 @@
+.links{
+    display: flex;
+    list-style: none;
+    gap: 5rem;
+    margin-left: 440PX;
+    font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+    z-index: 999;
+    margin-top: 10px;
+    
+}
+
+  
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+    position: relative;
+  }
+  
+  .nav-link.active {
+    color: rgb(130, 101, 101);
+  }
+  
+  .nav-link.active::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(255, 255, 0);
+  }
+  
+
+
+
+
+
+.link:hover{
+    color: rgb(144, 100, 189);
+}
+.Navbar{
+    height: 70px  ;
+    background-color: white;
+    box-shadow: 0px 21px 31px 3px rgba(0,0,0,0.1);
+    padding: 5PX;
+    display: flex;
+   
+}
+
+.link{
+    color: #9d9df0 !important;
+}
+
+
+
+
+@media only screen and (max-width: 767px) {
+  .links {
+      /* Update CSS rules for mobile devices here */
+      margin-left: -210px;
+      display:-ms-grid;
+      margin-top: 50px;
+      gap: 6px;
+      font-size: 14px;
+  }
+
+  .linkloi{
+  font-size: 16px;
+  margin-top: 10px;
+    font-size: 18px;
+    margin-left: 30px;
+
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 25px;
+}
+
+  .Navbar {
+      /* Update CSS rules for mobile devices here */
+      height: 80px;
+      width: 100%;
+  }
+  
+.Navbar{
+  height: 80px  ;
+
+ 
+}
+
+.link{
+  color: rgb(157, 157, 240);
+}
+
+}
+
+@media only screen and (min-width:1210px) {
+  .links{
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin-left: 160PX;
+    font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+    z-index: 999;
+    margin-top: 10px;
+    
+}
+.nav-link{
+  color: #9d9df0 !important;
+  font-size: 22px !important;
+}
+.Navbar{
+  height: 10vh  ;
+  width: 100% !important;
+  background-color: white;
+  box-shadow: 0px 21px 31px 3px rgba(0,0,0,0.1);
+  padding: 5PX;
+  display: flex;
+ 
+}
+.linklogo{
+  color: black !important;
+  margin-left: 20px !important;
+}
+.dropdown-toggle{
+  width: 160px !important;
+  border: 0px solid !important;
+  background-color: rgb(135, 129, 129) !important;
+}
+}

@@ -1,0 +1,202 @@
+
+
+.grid-hostel-container {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    flex-wrap: wrap;
+  }
+  
+  .grid-hostel-card {
+   
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  .grid-hostel-card:hover{
+    transform: scale(1.1);
+  }
+
+  .mainofferpic{
+     width: 414px;
+     height: 78px;
+     
+  }
+  .pic1{
+    width: 101%;
+    height:fit-contet;
+  }
+  .bgimghostel{
+    border-radius: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 177px;
+    min-height: 225px;
+
+  }
+  .hostelcardcontent{
+    position: absolute;
+    bottom: 20px;
+    left:0;
+    color: black;
+    border-radius: 20px;
+    margin-left: 11%;
+    height: 45px;
+    width: 160px;
+    font-size: 10px;
+  padding: 4px opx;
+    background-color: white;
+  }
+ .hostcontentpara1{
+    font-size: 11px;
+    margin-left: 33%;
+    margin-top: 1%;
+ }
+ .hostcontentpara2{
+    margin-left: 40%;
+    font-size: 14px;
+    margin-top: -5%;
+ }
+.BANGcontentpara2{
+    margin-left:18%;
+    font-size: 14px;
+    margin-top: -5%;
+}
+.GOAcontentpara2{
+    margin-left:20%;
+    font-size: 14px;
+    margin-top: -5%;
+}
+.HIMAcontentpara2{
+    margin-left:25%;
+    font-size: 14px;
+    margin-top: -5%;
+}
+.JAIScontentpara2{
+    margin-left:25%;
+    font-size: 14px;
+    margin-top: -5%;
+}
+.KASOLcontentpara2{
+    margin-left:35%;
+    font-size: 14px;
+    margin-top: -5%;
+}
+.COORGcontentpara2{
+    margin-left:35%;
+    font-size: 14px;
+    margin-top: -5%;
+}
+
+
+/* 
+  @media only screen and (min-width:770px)  {
+    .grid-hostel-container {
+        display:-ms-flexbox;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        flex-wrap: wrap;
+        
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+
+      .mainofferpic{
+        width: 1887px;
+        height: 78px;
+        
+     }
+     .pic1{
+       width: 2150px;
+       height:fit-content;
+     }
+      .hostelcardcontent{
+        position: absolute;
+        bottom: 20px;
+        left:0;
+        color: black;
+        border-radius: 20px;
+        margin-left: 24%;
+        height: 45px;
+        width: 200px;
+        font-size: 10px;
+      padding: 4px opx;
+        background-color: white;
+      }
+ 
+      .BANGcontentpara2{
+        margin-left:23%;
+        
+    }
+    .COORGcontentpara2{
+        margin-left:38%;
+       
+    }
+    .GOAcontentpara2{
+        margin-left:25%;
+       
+    }
+    .HIMAcontentpara2{
+        margin-left:31%;
+        
+    }
+    .JAIScontentpara2{
+        margin-left:28%;
+       
+    }
+  } */
+
+  @media only screen and (min-width:770px)and (max-width:1200px){
+    .grid-hostel-container {
+      display:-ms-flexbox;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      flex-wrap: wrap;
+      
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+    .pic1{
+      width: 1080px;
+      height:fit-content;
+    }
+
+    .hostelcardcontent{
+      position: absolute;
+      bottom: 20px;
+      left:0;
+      color: black;
+      border-radius: 20px;
+      margin-left: 16%;
+      height: 45px;
+      width: 200px;
+      font-size: 10px;
+    padding: 4px opx;
+      background-color: white;
+    }
+
+  }
+
+
+
+  @media only screen and (min-width:1200px){
+    .grid-hostel-container {
+    
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      
+      
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+    .hostelcardcontent{
+    
+      margin-left: 24%;
+      
+    }
+    .pic1{
+ width: 2133px;
+      height:fit-content;
+    }
+  }

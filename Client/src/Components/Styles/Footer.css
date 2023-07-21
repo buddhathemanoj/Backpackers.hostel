@@ -1,0 +1,159 @@
+
+.footerst{
+     font-family: 'Poppins', sans-serif;
+     background-color: black;
+     color: white;
+}
+.logoft{
+    margin-left: 13%;
+    height:80px;
+    display: flex;
+    gap: 9;
+   
+}
+.footlogo{
+    margin-right: 60%;
+    margin-top: 29px;
+}
+.ftlinks{
+    display: flex;
+   margin-left: 10%;
+    gap: 15rem;
+   
+}
+.links1{
+ list-style: none;
+ color: white;
+ text-decoration: none;
+ line-height: 35px;
+ margin-left: 15%;
+}
+.headft{
+    margin-left: 70px;
+    color: yellow;
+}
+.navlinks{
+    text-align: initial;
+}
+.linksfootinsta{
+    margin-top: 29px;
+   
+    gap: 2rem;
+}
+
+
+
+
+
+@media only screen and (max-width: 767px) {
+
+    .logoft{
+        margin-left: 1%;
+        height:60px;
+        display: flex;
+        gap: 10px;
+        
+       
+    }
+    .footlogo{
+        margin-right: 0%;
+        margin-top: 29px;
+    }
+    .footerst{
+        width: 100%;
+   }
+   .mobile{
+    display: flex;
+    gap: 25px;
+   }
+   .ftlinks{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    
+   margin-left: 0%;
+    gap: 0rem;
+   
+}
+
+.links1{
+    list-style: none;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    line-height: 35px;
+    margin-left: -10px;
+   }
+   .headft{
+       margin-left: 20px;
+       color: yellow;
+   }
+   .navlinks{
+       text-align: initial;
+   }
+   .linksfootinsta{
+    display: flex;
+    
+       gap: 0rem;
+   }
+   
+   
+}
+/* 
+
+
+@media only screen and  (max-width:1200px){
+
+    .footerst{
+        width: 1100px;
+   }
+   .ftlinks{
+    display: flex;
+   margin-left: 2%;
+    gap: 4rem;
+   
+}
+.footlogo{
+    margin-right: 60%;
+    margin-top: 29px;
+}
+.logoft{
+    margin-left: 2%;
+    height:80px;
+    display: flex;
+    gap: 10px;
+   
+}
+.headft{
+    margin-left: 60px;
+    color: yellow;
+}
+} */
+@media only screen and (min-width:1210px) {
+   .logoft{
+       margin:auto;
+       padding: 0 0 0 20px;  
+   }
+   .footlogo{
+       margin-right: 60%;
+       margin-top: 29px;
+   }
+   .ftlinks{      
+      margin: auto;
+       gap: 12rem; 
+       padding: 3rem;  
+   }
+   .links1{
+    line-height: 35px;
+    margin: auto;
+   }
+   .headft{
+       margin-left: 35px;
+       color: yellow;
+   }
+   .linksfootinsta{
+       margin-top: 29px;
+      justify-content: right;
+       gap: 2rem;
+   }
+}

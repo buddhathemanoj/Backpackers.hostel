@@ -1,0 +1,151 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1px; 
+    height: 90vh;
+    width: 1420px;
+   margin-left: 15%;
+  }
+  
+  .grid-item {
+    background-color: #f0f0f0;
+    border-radius: 25px;
+    height: 340px;
+   width: 272px;
+  }
+ .maincardcss{
+    height: 340px;
+    width: 272px;
+    border-radius: 25px;
+    position: relative;
+ }
+.ftstcardcontent{
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    line-height: 10px;
+    padding: 5px;
+    margin-left: 5%;
+    width: 100%;
+    color: white;
+    border-radius: 0 0 25px 25px;
+} 
+
+@media only screen and (max-width: 767px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 5px; 
+    padding: 15px;
+    height: 150vh;
+    width: 100%;
+   margin:0%;
+  }
+  
+  .grid-item {
+    background-color: #f0f0f0;
+    border-radius: 1px;
+    height: 190px;
+    width: 165px;
+  }
+ .maincardcss{
+  height: 190px;
+  width: 165px;
+    border-radius: 1px;
+    position: relative;
+ }
+ .imgdivfth{
+  height: 190px;
+  width: 165px;
+  margin-bottom: 5px;
+ }
+.ftstcardcontent{
+   
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    line-height: 10px;
+    padding: 5px;
+    margin-left: 5%;
+    width: 100%;
+    color: white;
+    border-radius: 0 0 25px 25px;
+} 
+.ftstcardcontent h3{
+   
+  font-size: 20px;
+} 
+.ftstcardcontent p{
+   
+  font-size: 16px;
+} 
+}
+
+
+@media only screen and (max-width: 400px) {
+  .grid-container {
+    
+    height: 170vh;
+    
+  }
+}
+
+
+/*  
+  @media only screen and  (max-width:1200px){
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px; 
+      height: 150vh;
+      width: 996px;
+     margin-left: 5%;
+     margin-right: 5%;
+    }
+    .maincardcss{
+      
+      border-radius: 25px;
+      position: relative;
+   }
+     
+   .grid-item {
+    margin-bottom: 20px;
+  }
+  }  */
+   
+@media only screen and (min-width:1210px) {
+  .grid-container {
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1px; 
+    height: 140vh;
+    width: 1080px;
+   
+  }
+  
+  .grid-item {
+  
+    width: 240px;
+    height: 300px;
+  }
+ .maincardcss{
+  width: 240px;
+  height: 300px;
+    
+ }
+ .imgdivfth{
+  width: 240px;
+  height: 300px;
+ }
+ .ftstcardcontent{
+  
+  bottom: 1px;
+  
+} 
+
+}

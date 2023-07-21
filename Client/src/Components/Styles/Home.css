@@ -1,0 +1,298 @@
+.stbar{
+    margin-left: 15%;
+    height: 110px;
+    display: flex;
+    width: 1420px;
+    background-color: yellow;
+    border-radius: 30px;
+    gap: 3rem;
+}
+.h1bar{
+    margin-left: 12%;
+    margin-top: 2%;
+}
+.btn1member{
+    width: 200px;
+    height: 50px;
+    margin-top: 1.9%;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    
+}
+.slidemain{
+    margin-left: 15%;
+}
+.imgslide{
+    width:  1420px;
+    max-height: 720px;
+    border-radius: 30px;
+}
+.mobslidemain{
+    width: 1080px;
+    height: 720px;
+    margin-left: 3%;
+    margin-right: 3%;
+   
+}
+.mobimgslide{
+    
+    border-radius: 30px;
+}
+.ftdhostel{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 15%;
+}
+
+.imgnews{
+    max-width: 288px;
+    max-height: 288px;
+    padding: 50px ;
+}
+.newsletter{
+    display: flex;
+    margin-left: 15%;
+    width: 1420px;
+    height: 370px;
+    background-color:#f9e1e1dc;
+    border-radius: 30px;
+}
+.newsword{
+    margin-top: 10px;
+    padding: 50px;
+    font-family: 'Poppins', sans-serif;
+}
+.formnews{
+    display: flex;
+    width: 563px;
+    height: 60px;
+    border-radius: 8px;
+    background-color:#ffffffdc;
+    gap: 5px;
+    box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
+    
+}
+
+.inputnews{
+    padding: 7px;
+    width: 480px;
+    height: 40px;
+    border-radius: 10px;
+    
+    border-color: rgba(255, 255, 255, 0.248);
+}
+.btnnews{
+    border-radius: 10px;
+    padding: 7px;
+    width: 56px;
+    height: 60px;
+    border-color: rgba(51, 255, 0, 0.248);
+}
+
+@media only screen and (max-width: 767px) {
+
+    .stbar{
+        height: 120px;
+        display:block;
+        width: 100%;
+        margin:0%;
+        margin-top: -12%;
+        padding: 3%;
+        border-radius: 0px;
+    }
+   
+
+    .stbar h2{
+       padding: 10px;
+       margin: auto;
+        font-size: 18px;
+        
+    }
+    
+.btn1member{
+    width: 100px;
+    height: 30px;
+ margin-top: -40px;
+    margin-left: 59%;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    
+}
+.slidemain{
+    margin:0%;
+    margin-top: -17%;
+}
+    .imgslide{
+        width:  100%;
+        height:190px;
+        border-radius: 0px;
+    }
+  
+    .ftdhostel{
+        font-family: 'Poppins', sans-serif;
+        padding: 3%;
+    }
+    
+    .imgnews{
+        width: 188px;
+        height: 188px;
+        margin-top: -80px;
+        margin-left: -60px;
+    }
+    .newsletter{
+        display: block;
+       margin:  -20px 0 0 0;
+     
+        width: 100%;
+        height: 250px;
+        background-color:#f9e1e1dc;
+        border-radius: 0px;
+    }
+    .newsword{
+        display: flex;
+        font-size: 20px;
+        margin: auto;
+        
+      
+    }
+    .newsword h1{
+        font-size: 20px;
+        text-align: justify; 
+        margin-top: -15px;
+    }
+    .formnews{
+        display: flex;
+        width:80%;
+        margin: auto;
+        height: 40px;
+        border-radius: 8px;
+        background-color:#ffffffdc;
+        gap: 5px;
+        box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
+        
+    }
+    .newsletter p {
+        margin-top: -90px;
+        padding: 0 20px 0 42px;
+        font-size: 18px;
+    }
+    .inputnews{
+        padding: 7px;
+        width: 490px;
+        height: 40px;
+        border-radius: 10px;
+        
+        border-color: rgba(255, 255, 255, 0.248);
+    }
+    .btnnews{
+        border-radius: 10px;
+        padding: 7px;
+        width: 56px;
+        height: 40px;
+        border-color: rgba(51, 255, 0, 0.248);
+    }
+    
+
+
+}
+   
+@media only screen and (max-width: 400px) {
+    .newsword h1{
+       margin-left: -30px;
+       margin-top: -10px;
+       font-size: 18px;
+       text-align: justify;
+    }
+  }
+@media only screen and (min-width:1210px) {
+  .stbar{
+   
+    justify-content: center;
+    align-items: center;
+   
+    height: 110px;
+    display: flex;
+    width: 1080px;
+    background-color: yellow;
+    border-radius: 30px;
+    gap: 3rem;
+}
+.h1bar{
+ margin: auto;
+ padding: 5px 0 0 30px;
+
+}
+
+.btn1member{
+  width: 200px;
+  height: 50px;
+  margin-top: 5px;
+ margin-right: 20px;
+}
+.slidemain{
+justify-content: center;
+align-items: center;
+}
+.imgslide{
+  width:  1080px;
+ 
+}
+.ftdhostel{
+  font-family: 'Poppins', sans-serif;
+  
+}
+
+
+.newsletter{
+  display: flex;
+  margin-top: 80px;
+  width: 1080px;
+  height: 370px;
+  background-color:#f9e1e1dc;
+  border-radius: 30px;
+}
+
+.newsword{
+    display: flex;
+  margin: auto;
+  padding: 50px;
+  
+}
+.mama1{
+    margin-top: -20%;
+    margin-left: 33%;
+}
+
+.formnews{
+  display: flex;
+  width: 563px;
+  height: 60px;
+  border-radius: 8px;
+  background-color:#ffffffdc;
+  gap: 5px;
+  box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
+  
+}
+
+.inputnews{
+  
+  margin: auto;
+  width: 480px;
+  height: 40px;
+
+  
+  border-color: rgba(255, 255, 255, 0.248);
+}
+.btnnews{
+  border-radius: 10px;
+  padding: 7px;
+  width: 56px;
+  height: 60px;
+  border-color: rgba(51, 255, 0, 0.248);
+}
+.imgnews{
+ 
+margin: auto;
+}
+}

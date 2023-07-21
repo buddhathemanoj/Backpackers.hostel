@@ -1,0 +1,165 @@
+.Summarydiv {
+    line-height: 2.4rem;
+    justify-items: center;
+    text-align: initial;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 0 40px 40px;
+}
+
+.Summarydiv h2 {
+    color: black;
+}
+
+.Summarydiv p {
+    font-size: 17px;
+    color: black;
+    text-align: justify;
+}
+
+.emailbox h3 {
+    font-family: 'Poppins', sans-serif;
+    color: black;
+}
+
+.emailbox label {
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    text-align: initial;
+    font-size: 16px;
+}
+
+.h2probox {
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+}
+
+.paraprobox {
+    font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+}
+
+.booknowbtn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    width: 350px;
+    border-color: rgba(255, 255, 255, 0.248);
+    background-color: yellow;
+}
+
+
+.mainpara{
+    font-size: 28px;
+    color: black;
+    text-align: initial;
+    font-family: 'Poppins', sans-serif;
+   }
+#buttonOne{
+    font-size: 20px;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    
+    border-radius: 10px;
+    border: 0.5px solid ;
+    border-color: rgba(128, 128, 128, 0.526);
+  
+}
+#buttontwo{
+    font-size: 20px;
+    color: black;
+    border-radius: 10px;
+    border: 0.5px solid ;
+    border-color: rgba(128, 128, 128, 0.526);
+    font-family: 'Poppins', sans-serif;
+}
+#buttonthree{
+    font-size: 20px;
+    color: black;
+    border-radius: 10px;
+    border: 0.5px solid ;
+    border-color: rgba(128, 128, 128, 0.526);
+    font-family: 'Poppins', sans-serif;
+}
+#buttonfour{
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    border-radius: 10px;
+    border: 0.5px solid ;
+    border-color: rgba(128, 128, 128, 0.526);
+}
+
+@media only screen and (max-width: 767px) {
+    #registermob > .MuiGrid-root {
+      display: block;
+    
+      max-width: 700px;
+      padding: 0px;
+      margin: auto;
+    }
+  #emailbox{
+    width: 335px;
+    margin: -100px 0 130px -40px;
+    
+    height: 600px;
+  }
+#emailform{
+    line-height: 0.5rem;
+}
+#emaildappa{
+    background-color: rgb(255, 255, 255);
+}
+.Summarydiv {
+    line-height: 1.4rem;
+    width: 335px;
+    
+    justify-content: center;
+    align-items: initial;
+    height: 470px;
+    margin:initial;
+    line-height: 1rem;
+    background-color: rgb(255, 255, 255);
+}
+#summarybox{
+   
+    padding: 0px;
+    margin-left: -40px;
+    margin-top: -195px;
+    margin-bottom: 50px;
+}
+.Summarydiv h2{
+    font-size: 24px;
+}
+.Summarydiv p{
+    font-size: 14px;
+}
+.booknowbtn {
+    
+    font-size: 18px;
+    width: 300px;
+    height: 30px;
+   margin-left: -20px;
+}
+#propbox{
+    width: 335px;
+    height: 630px;
+    margin-left: -40px;
+    background-color: rgb(255, 255, 255);
+}
+#propbox h2{
+   font-size: 24px;
+}
+#propbox p{
+    font-size: 16px;
+ }
+
+ #coinsbox{
+    width: 335px;
+    margin: 10px 0 20px -40px;
+ }
+ #promocard input{
+    margin-left: -20px;
+ }
+  }
+  
