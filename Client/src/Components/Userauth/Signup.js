@@ -122,9 +122,8 @@ export const Signup = () => {
   const [showOtpForm, setShowOtpForm] = useState(false);
   const [otp, setOtp] = useState("");
   const [userId, setUserId] = useState("");
-
   async function handleRegister() {
-    if (password >= 0) {
+    if (password.length >= 0) {
       const user = {
         fname,
         lname,
@@ -133,14 +132,24 @@ export const Signup = () => {
       };
       try {
         setLoading(true);
-        const result = await axios.post("http://localhost:5001/api/users/register", user);
+        const response = await axios.post("http://localhost:5001/api/users/register", user);
         setLoading(false);
-        if (result.data.status === "ok") {
+        if (response.data.status === "ok") {
           setShowOtpForm(true);
-          console.log(result.data)
-          setUserId(result.data.data.userId);
+          console.log(response.data);
+          // Call another API to fetch the user ID using the registered email
+          const userIdResponse = await axios.post("http://localhost:5001/api/users/getUserId", {
+            email: user.email,
+          });
+          if (userIdResponse.data.status === "ok") {
+            setUserId(userIdResponse.data.userId); // Store the user ID in state
+          }
+        } else if (response.data.error === "User Exists") {
+          setError(true);
+          console.log("User already exists");
         } else {
           setError(true);
+          console.log("Error during registration");
         }
       } catch (error) {
         console.log(error);
@@ -156,7 +165,7 @@ export const Signup = () => {
     try {
       setLoading(true);
       const result = await axios.post("http://localhost:5001/api/users/verifyotp", {
-        userId: result.data.data.userId, // <--- The error is here
+        userId: userId, // Use the stored userId here
         otp,
       });
       setLoading(false);
@@ -171,6 +180,7 @@ export const Signup = () => {
       setError(true);
     }
   }
+
   return (
     <div style={{ padding: "100px" }}>
         {loading && <Loader />}

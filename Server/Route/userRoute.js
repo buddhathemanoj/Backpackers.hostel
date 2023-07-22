@@ -86,6 +86,27 @@ const sendOtpVerification = async (email, userId) => {
 };
 
 
+router.post('/getUserId', async (req, res) => {
+  const { email } = req.body;
+  console.log('Request Body:', req.body);
+
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      // If the user is found, return the user ID
+      console.log('User Found:', user);
+      return res.json({ status: 'ok', userId: user._id });
+    } else {
+      // If the user with the provided email is not found, return an error
+      console.log('User Not Found');
+      return res.json({ status: 'error', message: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error while fetching user ID:', error);
+    return res.json({ status: 'error', message: 'Failed to fetch user ID' });
+  }
+});
+
 
 router.post("/verifyotp", async (req, res) => {
   try {
@@ -128,7 +149,6 @@ router.post("/verifyotp", async (req, res) => {
     });
   }
 });
-
 
 
 
