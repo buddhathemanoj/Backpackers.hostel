@@ -110,8 +110,10 @@ import { Loader } from "../Hostelrooms/Loader";
 import { Error } from "../Hostelrooms/Error";
 import { Success } from "../Hostelrooms/Success";
 import axios from "axios";
-
+import {  useNavigate } from "react-router-dom";
 export const Signup = () => {
+
+  const navigate = useNavigate();
   const [fname, setFname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -171,6 +173,8 @@ export const Signup = () => {
       setLoading(false);
       if (result.data.status === "verified") {
         setSuccess(true);
+        navigate("/home");
+
       } else {
         setError(true);
       }
