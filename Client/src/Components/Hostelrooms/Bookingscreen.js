@@ -73,20 +73,24 @@ export const Bookingscreen = () => {
     console.log(token)
     const bookingDetails = {
       roomid,
-      user :  JSON.parse(localStorage.getItem('currentUser')),
+      user: JSON.parse(localStorage.getItem('currentUser')),
       fromdate,
       todate,
       totalamount,
-      totaldays
-    } 
+      totaldays,
+      token: {
+        id: token.id,
+        email: token.email,
+        // Add any other relevant properties from the token object if needed
+      },
+    };
     console.log("Handle booking data:", roomid, bookingDetails.user, fromdate, todate, totalamount, totaldays);
-      try {
-        const result = await axios.post("http://localhost:5001/api/bookings/bookroom" , bookingDetails)
-        console.log("Booking result:", result.data);
-      } catch (error) {
-        console.log(error);
-      }
-    
+    try {
+      const result = await axios.post("http://localhost:5001/api/bookings/bookroom", bookingDetails);
+      console.log("Booking result:", result.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <div style={{ padding: "0 10%" }} className="m-5">
@@ -126,12 +130,14 @@ export const Bookingscreen = () => {
                 <div>
                   
 
-                  <StripeCheckout
-        token={onToken}
-        amount={(differenceInDays * room.rentperday )* 100}
-        currency="INR"
-        stripeKey="pk_test_51NX1EUSF1xBrB4nWgV6TOnSz5qlNdNgENlb1T6eMks22szA4hBNpLDKrTt12bFr4GxGu7ygJlTLuF8kAzO0PIN8j00TrEJj6jw"
-      ><button className="btn-primary" >Pay Now</button></StripeCheckout>
+                <StripeCheckout
+  token={onToken}
+  amount={(differenceInDays * room.rentperday) * 100}
+  currency="INR"
+  stripeKey="pk_test_51NX1EUSF1xBrB4nWgV6TOnSz5qlNdNgENlb1T6eMks22szA4hBNpLDKrTt12bFr4GxGu7ygJlTLuF8kAzO0PIN8j00TrEJj6jw"
+>
+  <button className="btn-primary">Pay Now</button>
+</StripeCheckout>
                 </div>
               </div>
             </div>
