@@ -3,6 +3,7 @@ import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import "../Styles/Bookroom.css";
 import { Loader } from "./Loader";
+import StripeCheckout from 'react-stripe-checkout';
 import { Error } from "@mui/icons-material";
 import moment from "moment";
 
@@ -17,20 +18,26 @@ export const Bookingscreen = () => {
   const queryParams = new URLSearchParams(location.search);
   const fromdate = queryParams.get("fromdate");
   const todate = queryParams.get("todate");
-
   
-
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
   
-
+  const formattedFromDate = formatDate(fromdate);
+  const formattedToDate = formatDate(todate);
   // Function to calculate the difference between two dates in days
-  function dateDiffInDays(fromDate, toDate) {
+  function dateDiffInDays(formattedFromDate, formattedToDate) {
     const oneDay = 24 * 60 * 60 * 1000; // One day in milliseconds
-    const startDate = moment(fromDate, "DD-MM-YYYY").toDate();
-    const endDate = moment(toDate, "DD-MM-YYYY").toDate();
+    const startDate = moment(formattedFromDate, "DD-MM-YYYY").toDate();
+    const endDate = moment(formattedToDate, "DD-MM-YYYY").toDate();
     const diffInDays = Math.round((endDate - startDate) / oneDay);
     return diffInDays + 1;
   }
-  const differenceInDays = dateDiffInDays(fromdate, todate);
+  const differenceInDays = dateDiffInDays(formattedFromDate, formattedToDate);
    
   const totaldays = differenceInDays;
   
@@ -59,9 +66,11 @@ export const Bookingscreen = () => {
     fetchRoom(); //  to fetch the data
   }, [roomid]); // e roomid in the array to fetch data when it changes
 
-  
-  async function handleBookingdata(){
-    
+
+
+
+ async function onToken(token){
+    console.log(token)
     const bookingDetails = {
       roomid,
       user :  JSON.parse(localStorage.getItem('currentUser')),
@@ -77,10 +86,7 @@ export const Bookingscreen = () => {
       } catch (error) {
         console.log(error);
       }
-
-
-
-
+    
   }
   return (
     <div style={{ padding: "0 10%" }} className="m-5">
@@ -105,8 +111,8 @@ export const Bookingscreen = () => {
                   <hr />
                   <b>
                     <p>Name: Manoj Prabhakar</p>
-                    <p>From Date :{fromdate} </p>
-                    <p>To Date : {todate}</p>
+                    <p>From Date :{formattedFromDate} </p>
+                    <p>To Date : {formattedToDate}</p>
                     <p> Max Count : {room.maxcount}</p>
                   </b>
                 </div>
@@ -118,7 +124,14 @@ export const Bookingscreen = () => {
                   <p>Total Amount :{differenceInDays * room.rentperday} </p>
                 </div>
                 <div>
-                  <button className="btn-primary" onClick={handleBookingdata}>Pay Now</button>
+                  
+
+                  <StripeCheckout
+        token={onToken}
+        amount={(differenceInDays * room.rentperday )* 100}
+        currency="INR"
+        stripeKey="pk_test_51NX1EUSF1xBrB4nWgV6TOnSz5qlNdNgENlb1T6eMks22szA4hBNpLDKrTt12bFr4GxGu7ygJlTLuF8kAzO0PIN8j00TrEJj6jw"
+      ><button className="btn-primary" >Pay Now</button></StripeCheckout>
                 </div>
               </div>
             </div>
