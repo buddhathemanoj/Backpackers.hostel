@@ -4,15 +4,20 @@ import axios from "axios";
 import "../Styles/Bookroom.css";
 import { Loader } from "./Loader";
 import StripeCheckout from 'react-stripe-checkout';
-import { Error } from "@mui/icons-material";
-import moment from "moment";
 
+import moment from "moment";
+ import { Modal, Button, Carousel } from "react-bootstrap";
 export const Bookingscreen = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error , setError] = useState(false);
   const [room, setRoom] = useState(null);
  const [totalamount, setTotalamount] = useState();
+ const [paymentSuccess, setPaymentSuccess] = useState(false);
+ const [paymentFailure, setPaymentFailure] = useState(false);
+ const user = JSON.parse(localStorage.getItem("currentUser"))
 
+const [showSuccess, setShowSuccess] = useState(false);
+const [showFailure, setShowFailure] = useState(false);
   const { roomid } = useParams();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -20,16 +25,20 @@ export const Bookingscreen = () => {
   const todate = queryParams.get("todate");
   
   const formatDate = (dateString) => {
+    
     const date = new Date(dateString);
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
+
+    
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
+
+    
     return `${day}-${month}-${year}`;
   };
-  
   const formattedFromDate = formatDate(fromdate);
   const formattedToDate = formatDate(todate);
-  // Function to calculate the difference between two dates in days
+  
   function dateDiffInDays(formattedFromDate, formattedToDate) {
     const oneDay = 24 * 60 * 60 * 1000; // One day in milliseconds
     const startDate = moment(formattedFromDate, "DD-MM-YYYY").toDate();
@@ -58,7 +67,7 @@ export const Bookingscreen = () => {
         console.log(totalamount)
       } catch (error) {
         setLoading(false);
-        setError(true);
+      
         console.error("Error fetching room data:", error);
       }
     };
@@ -66,16 +75,45 @@ export const Bookingscreen = () => {
     fetchRoom(); //  to fetch the data
   }, [roomid]); // e roomid in the array to fetch data when it changes
 
+  const handleClose = () => {
+    setShowSuccess(false);
+    setShowFailure(false);
+  };
+ 
+const SuccessPop = ({ handleClose }) => {
+  return (
+    <Modal.Body>
+      <h2>Payment Successful!</h2>
+      <p>Your room has been booked successfully.</p>
+      <Button variant="secondary" onClick={handleClose}>
+        Close
+      </Button>
+    </Modal.Body>
+  );
+};
 
-
+const FailurePop = ({ handleClose }) => {
+  return (
+    <Modal.Body>
+      <h2>Payment Failed!</h2>
+      <p>Sorry, there was an issue processing your payment. Please try again.</p>
+      <Button variant="secondary" onClick={handleClose}>
+        Close
+      </Button>
+    </Modal.Body>
+  );
+};
 
  async function onToken(token){
+
     console.log(token)
+    const formatFromDate = moment(fromdate).format("DD-MM-YYYY");
+    const formatToDate = moment(todate).format("DD-MM-YYYY");
     const bookingDetails = {
       roomid,
       user: JSON.parse(localStorage.getItem('currentUser')),
-      fromdate,
-      todate,
+      fromdate:formatFromDate,
+      todate:formatToDate,
       totalamount,
       totaldays,
       token: {
@@ -84,12 +122,19 @@ export const Bookingscreen = () => {
         // Add any other relevant properties from the token object if needed
       },
     };
-    console.log("Handle booking data:", roomid, bookingDetails.user, fromdate, todate, totalamount, totaldays);
+    console.log("Handle booking data:", roomid, bookingDetails.user,formatFromDate, formatToDate, totalamount, totaldays);
     try {
       const result = await axios.post("http://localhost:5001/api/bookings/bookroom", bookingDetails);
       console.log("Booking result:", result.data);
+
+      if (result.data && result.data.message === 'Room booked successfully') {
+        setShowSuccess(true);
+      } else {
+        setShowFailure(true);
+      }
     } catch (error) {
       console.log(error);
+      setShowFailure(true);
     }
   }
   return (
@@ -97,7 +142,7 @@ export const Bookingscreen = () => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Error />
+        <h1>there s a error</h1>
       ) : (
         <div>
           {room && (
@@ -114,7 +159,7 @@ export const Bookingscreen = () => {
                   <h1>Bokking Summary</h1>
                   <hr />
                   <b>
-                    <p>Name: Manoj Prabhakar</p>
+                    <p>Name: {user.data.currentUser.name}</p>
                     <p>From Date :{formattedFromDate} </p>
                     <p>To Date : {formattedToDate}</p>
                     <p> Max Count : {room.maxcount}</p>
@@ -138,6 +183,19 @@ export const Bookingscreen = () => {
 >
   <button className="btn-primary">Pay Now</button>
 </StripeCheckout>
+<Modal show={showSuccess} onHide={() => setShowSuccess(false)}>
+      <Modal.Header closeButton>
+        <Modal.Title>Payment Success</Modal.Title>
+      </Modal.Header>
+      <SuccessPop handleClose={handleClose} />
+    </Modal>
+
+    <Modal show={showFailure} onHide={() => setShowFailure(false)}>
+      <Modal.Header closeButton>
+        <Modal.Title>Payment Failure</Modal.Title>
+      </Modal.Header>
+      <FailurePop handleClose={handleClose} />
+    </Modal>
                 </div>
               </div>
             </div>

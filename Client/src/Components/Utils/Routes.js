@@ -13,6 +13,7 @@ import { Agra } from "../Pages/Agra";
 import { Register } from "../Pages/Register.js";
 import { Bookingscreen } from "../Hostelrooms/Bookingscreen";
 import { Signup } from "../Userauth/Signup";
+import Profilescreen from "../Hostelrooms/Profilescreen";
 function Routesmain (){
   
     return(
@@ -34,6 +35,7 @@ function Routesmain (){
           <Route path="/book/:roomid" element={<Bookingscreen />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/myprofile" element={<Profilescreen />} />
          
 
 

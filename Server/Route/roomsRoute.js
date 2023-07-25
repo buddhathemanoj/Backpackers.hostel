@@ -30,6 +30,18 @@ router.post("/getroombyid" , async (req,res)=>{
       }
 } );
 
+router.post("/findroomnamebyid", async (req, res) => {
+    const roomids = req.body.roomids;
+    try {
+      const rooms = await Room.find({ _id: { $in: roomids } }, { name: 1, _id: 0 }); // Include only the 'name' field and exclude the '_id' field
+      const roomNames = rooms.map((room) => room.name);
+      res.send(roomNames);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
+  
+  
 router.get("/getallrooms", async(req,res)=>{
     try {
         const roooms = await Room.find({})

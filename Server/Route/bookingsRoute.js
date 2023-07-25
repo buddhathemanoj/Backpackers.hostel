@@ -1,7 +1,12 @@
 
-const express = require("express");
+const express = 
+
+require("express");
 const router = express.Router();
 const Room = require('../Models/room')
+const moment = require("moment");
+
+
 const Booking = require("../Models/booking");
 const stripe = require("stripe")(
   "sk_test_51NX1EUSF1xBrB4nWnhn1jXUSWZWctbuU1pxXHTlpBqVFMXXGJlq1Q7fyaxxOpeGvvm23MYa0m2XThlst0Ka4eYDJ006K0YYwLk"
@@ -59,8 +64,8 @@ router.post("/bookroom", async (req, res) => {
         const newbooking = new Booking({
           roomid: roomId,
           userid: body.user.data.currentUser._id,
-          fromdate: body.fromdate,
-          todate: body.todate,
+          fromdate: moment(body.fromdate).format("DD-MM-YYYY"),
+          todate: moment(body.todate).format("DD-MM-YYYY"),
           totalamount: body.totalamount,
           totaldays: body.totaldays,
         });
@@ -104,4 +109,17 @@ router.post("/bookroom", async (req, res) => {
   }
 });
 
+
+router.post('/getbookingsbyuserid',async(req,res)  =>{
+ 
+ const userid = req.body.userid
+  
+
+ try {
+  const bookings = await Booking.find({userid :userid})
+  res.send(bookings)
+ } catch (error) {
+   return res.status(400).json({ error})
+ }
+} )
 module.exports = router;
