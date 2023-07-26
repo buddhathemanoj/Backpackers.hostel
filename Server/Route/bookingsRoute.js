@@ -61,11 +61,13 @@ router.post("/bookroom", async (req, res) => {
       });
     if (paymentIntent.status == "succeeded") {
       try {
+
+        
         const newbooking = new Booking({
           roomid: roomId,
           userid: body.user.data.currentUser._id,
-          fromdate: moment(body.fromdate).format("DD-MM-YYYY"),
-          todate: moment(body.todate).format("DD-MM-YYYY"),
+          fromdate: moment(body.fromdate, "DD-MM-YYYY").toDate(),
+    todate: moment(body.todate, "DD-MM-YYYY").toDate(),
           totalamount: body.totalamount,
           totaldays: body.totaldays,
         });
@@ -83,8 +85,8 @@ router.post("/bookroom", async (req, res) => {
 
         bookingDetails.currentbooking.push({
           bookingid: booking._id,
-          fromdate: booking.fromdate,
-          todate: booking.todate,
+          fromdate: moment(booking.fromdate, "DD_MM_YYYY").format("DD-MM-YYYY"), 
+          todate: moment(booking.todate, "DD_MM_YYYY").format("DD-MM-YYYY"),
           userid: booking.userid,
           status: booking.status,
         });
@@ -122,4 +124,33 @@ router.post('/getbookingsbyuserid',async(req,res)  =>{
    return res.status(400).json({ error})
  }
 } )
+
+
+
+
+
+
+
+
+
+
+router.post('/cancelbooking', async (req, res) => {
+  const { bookingid, roomid } = req.body;
+
+  try {
+    const booking = await Booking.findOne({ _id: bookingid });
+    booking.status = "cancelled";
+    await booking.save();
+
+    const room = await Room.findOne({ _id: roomid });
+    const bookings = room.currentbooking;
+    const temp = bookings.filter(booking => bookingid.toString() !== bookingid);
+    room.currentbooking = temp;
+    await room.save();
+
+    res.send('booking cancelled successfully');
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
 module.exports = router;

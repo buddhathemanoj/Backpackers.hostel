@@ -1,10 +1,11 @@
 import React, { useState , useEffect } from 'react';
 import { Radio, Space, Tabs } from 'antd';
 import axios from 'axios';
+import moment from 'moment';
 import '../Styles/Bookroom.css'
 import { Link, useNavigate } from "react-router-dom";
 import { Loader } from "./Loader";
-
+import { Modal, Button, Carousel } from "react-bootstrap";
 const Profilescreen = () => {
    
     const [tabPosition, setTabPosition] = useState('left');
@@ -46,7 +47,9 @@ export function Mybookings(){
     const [Rooms , setRooms] = useState([]);
     const [bookings , setBookings] = useState([]);
     const [loading, setLoading] = useState(false);
-  
+    const [showCancelBtn, setShowCancelBtn] = useState(true); 
+    const [showSuccess, setShowSuccess] = useState(false); 
+    const [showFailure, setShowFailure] = useState(false);
     useEffect(() => {
         const fetchBookings = async () => {
           try {
@@ -81,41 +84,83 @@ export function Mybookings(){
         }
       };
       
+      async function cancelbooking(bookingid, roomid) {
+        try {
+          setLoading(true);
+          const result = await axios.post("http://localhost:5001/api/bookings/cancelbooking", { bookingid, roomid });
+          setLoading(false);
+          const response = result.data;
+          console.log('cancel response ', response);
+          setShowCancelBtn(false); // Hide the cancel button after successful cancellation
+          setShowSuccess(true); // Show the success popup
+        } catch (error) {
+          console.log(error);
+          // Handle the failure case and show the failure popup if needed
+          setShowFailure(true);
+        }
+      }
 
     return(
         <div className='row'>
         <div className='col-md-6'>
           {loading && (<Loader />)}
           {Rooms.length > 0 && bookings.length > 0 && (
-            <div className='ml-10  boxshaows'>
+            <div className='ml-10 '>
               {bookings.map((booking, index) => (
-                <div key={index} style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
+                <div className='boxshaows' key={index} style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
                   <div>
                   <h5>Booking {index + 1}</h5>
-                  <h4>  {Rooms[index]?.name}</h4>
-                
-                 
-                    {Rooms[index]?.imageurls && Rooms[index].imageurls.length > 0 && (
+                  <h4>  {Rooms[index].name}</h4>
+
+                 {Rooms[index]?.imageurls && Rooms[index].imageurls.length > 0 && (
                       <img src={Rooms[index].imageurls[0]} alt="Room" style={{ maxWidth: "320px" }} />
                     )}
+                 
+                   
                   </div>
                   <div style={{ marginLeft: "10%" , paddingTop:"90px" }}>
                    
                     
                     <p> <b>Max Count:</b> {Rooms[index]?.maxcount}</p>
-                    
                   
-                    <p><b>From Date: </b>{booking.fromdate}</p>
-                    <p><b>To Date:</b> {booking.todate}</p>
+                    <p><b>From Date: </b>{moment(booking.fromdate).format("DD-MM-YYYY ")}</p>
+          <p><b>To Date:</b> {moment(booking.todate).format("DD-MM-YYYY ")}</p>
                     <p><b>Total Days:</b> {booking.totaldays}</p>
                     <p><b>Total Amount:</b> {booking.totalamount}</p>
                     <p><b>Status:</b> {booking.status=='booked' ? "CONFIRMED" : "CANCELLED"}</p>
+
+                    {showCancelBtn && ( // Render the cancel button only if showCancelBtn is true
+                    <div className='text-right'>
+                      <button className='btn btn-primary' onClick={() => { cancelbooking(booking._id, booking.roomid) }}>Cancel Booking</button>
+                    </div>
+                  )}
                   </div>
                 </div>
               ))}
             </div>
           )}
         </div>
+         {/* Success Popup */}
+      <Modal show={showSuccess} onHide={() => setShowSuccess(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Booking Cancelled</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Your room booking has been cancelled.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowSuccess(false)}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Failure Popup - Add similar code if you want to show a failure popup */}
+      <Modal show={showFailure} onHide={() => setShowFailure(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Booking Cancellation Failed</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Sorry, we couldn't cancel your booking at the moment. Please try again later.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowFailure(false)}>Close</Button>
+        </Modal.Footer>
+      </Modal>
       </div>
     )
 }

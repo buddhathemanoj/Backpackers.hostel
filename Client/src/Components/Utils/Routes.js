@@ -30,7 +30,7 @@ function Routesmain (){
           <Route exact path="/membership" element={<Membership />} />
           <Route exact path="/blogs" element={<Blogs />} />
           <Route exact path="/hostels/agra" element={<Agra />} />
-          <Route exact path="/checkinagra" element={<Maincheckinagra />} />
+          <Route exact path="/checkin/:city" element={<Maincheckinagra />} />
           <Route exact path="/register" element={<Register />} />
           <Route path="/book/:roomid" element={<Bookingscreen />} />
           <Route exact path="/login" element={<Login />} />

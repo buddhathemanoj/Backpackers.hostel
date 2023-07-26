@@ -25,16 +25,11 @@ const [showFailure, setShowFailure] = useState(false);
   const todate = queryParams.get("todate");
   
   const formatDate = (dateString) => {
-    
     const date = new Date(dateString);
-
-    
     const day = String(date.getDate()).padStart(2, "0");
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
-
-    
-    return `${day}-${month}-${year}`;
+    return `${day}_${month}_${year}`;
   };
   const formattedFromDate = formatDate(fromdate);
   const formattedToDate = formatDate(todate);
@@ -72,9 +67,8 @@ const [showFailure, setShowFailure] = useState(false);
       }
     };
 
-    fetchRoom(); //  to fetch the data
-  }, [roomid]); // e roomid in the array to fetch data when it changes
- 
+    fetchRoom(); 
+  }, [roomid]); 
   const handleClose = () => {
     setShowSuccess(false);
     setShowFailure(false);
@@ -103,40 +97,42 @@ const FailurePop = ({ handleClose }) => {
     </Modal.Body>
   );
 };
+async function onToken(token) {
+  console.log(token);
 
- async function onToken(token){
+  const formatFromDate = formatDate(fromdate);
+  const formatToDate = formatDate(todate);
 
-    console.log(token)
-    const formatFromDate = moment(fromdate).format("DD-MM-YYYY");
-    const formatToDate = moment(todate).format("DD-MM-YYYY");
-    const bookingDetails = {
-      roomid,
-      user: JSON.parse(localStorage.getItem('currentUser')),
-      fromdate:formatFromDate,
-      todate:formatToDate,
-      totalamount,
-      totaldays,
-      token: {
-        id: token.id,
-        email: token.email,
-        // Add any other relevant properties from the token object if needed
-      },
-    };
-    console.log("Handle booking data:", roomid, bookingDetails.user,formatFromDate, formatToDate, totalamount, totaldays);
-    try {
-      const result = await axios.post("http://localhost:5001/api/bookings/bookroom", bookingDetails);
-      console.log("Booking result:", result.data);
+  const bookingDetails = {
+    roomid,
+    user: JSON.parse(localStorage.getItem('currentUser')),
+    fromdate: formatFromDate,
+    todate: formatToDate,
+    totalamount,
+    totaldays,
+    token: {
+      id: token.id,
+      email: token.email,
+      // Add any other relevant properties from the token object if needed
+    },
+  };
 
-      if (result.data && result.data.message === 'Room booked successfully') {
-        setShowSuccess(true);
-      } else {
-        setShowFailure(true);
-      }
-    } catch (error) {
-      console.log(error);
+  console.log("Handle booking data:", bookingDetails, roomid, bookingDetails.user, formatFromDate, formatToDate, totalamount, totaldays);
+
+  try {
+    const result = await axios.post("http://localhost:5001/api/bookings/bookroom", bookingDetails);
+    console.log("Booking result:", result.data);
+
+    if (result.data && result.data.message === 'Room booked successfully') {
+      setShowSuccess(true);
+    } else {
       setShowFailure(true);
     }
+  } catch (error) {
+    console.log(error);
+    setShowFailure(true);
   }
+}
   return (
     <div style={{ padding: "0 10%" }} className="m-5">
       {loading ? (

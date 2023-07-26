@@ -42,10 +42,14 @@ router.post("/findroomnamebyid", async (req, res) => {
   });
   
   
-router.get("/getallrooms", async(req,res)=>{
+router.get("/getallrooms/:city", async(req,res)=>{
     try {
-        const roooms = await Room.find({})
-        console.log('room', roooms)
+      const city = req.params.city;
+      console.log('city used in query:', city)
+      const roooms = await Room.find({ city: city })
+      console.log('room::', roooms)
+      
+        console.log(city)
         return res.json({roooms});
     } catch (error) {
         return res.status(400).json({message:error});
