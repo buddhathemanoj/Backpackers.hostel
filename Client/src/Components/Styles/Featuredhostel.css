@@ -4,8 +4,8 @@
     grid-template-rows: repeat(2, 1fr);
     gap: 1px; 
     height: 90vh;
-    width: 1420px;
-   margin-left: 15%;
+   
+  
   }
   
   .grid-item {
@@ -124,7 +124,7 @@
     grid-template-rows: repeat(3, 1fr);
     gap: 1px; 
     height: 140vh;
-    width: 1080px;
+    width: 1110px;
    
   }
   

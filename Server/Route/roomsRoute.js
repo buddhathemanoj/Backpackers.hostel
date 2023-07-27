@@ -56,5 +56,28 @@ router.get("/getallrooms/:city", async(req,res)=>{
     }
 });
 
+router.get('/getalllrooms', async (req,res)=>{
+
+  try {
+    const rooms = await Room.find()
+    res.send(rooms)
+  } catch (error) {
+    return res.status(400).json({message:error});
+  }
+}  )
+
+
+
+router.post('/addrooms' , async (req,res)=>{
+  try {
+    const newroom = new Room(req.body)
+    await newroom.save()
+
+    res.send('new room saved successfully')
+  } catch (error) {
+    return res.status(400).json({message:error});
+    
+  }
+})
 
 module.exports = router;

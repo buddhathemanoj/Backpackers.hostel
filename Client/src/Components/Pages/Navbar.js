@@ -12,6 +12,8 @@ function handleLogout(){
   const location = useLocation();
   const user = JSON.parse(localStorage.getItem('currentUser'));
 
+
+   
   return (
     <div>
       <nav className="Navbar">

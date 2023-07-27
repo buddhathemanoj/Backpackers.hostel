@@ -30,6 +30,7 @@
     "react-stripe-checkout": "^2.6.3",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.0.2",
+    "sweetalert2": "^11.7.20",
     "swiper": "^10.0.4",
     "web-vitals": "^2.1.4"
   },

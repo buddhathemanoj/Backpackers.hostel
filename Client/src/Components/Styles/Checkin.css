@@ -1,8 +1,8 @@
 .checkinform{
     display: flex;
-    margin-left: 15%;
+  
     gap: 30px;
-    width: 1420px;
+
     height: 120px;
     background-color: yellow;
     border-radius: 30px;
@@ -18,37 +18,11 @@
 
 
 
-.date-box{
-    width: 220px;
-    margin-top: 22px;
-}
 
-.date-box1{
-    width: 220px;
-    margin-top: 22px;
-}
-.checkindatepicker{
-    height: 50px;
-   
-}
-.checkinbox1{
-    height: 30px;
-    width: 220px;
-    border-color: rgba(255, 255, 255, 0.248);
-    box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
-   
-}
-.checkoutbox1{
-    height: 30px;
-    width: 220px;
-   margin-left: 0%;
-    box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
-    border-color: rgba(255, 255, 255, 0.248);
-}
 
 
 .locationselector{
-    width: 500px;
+    width: 700px;
     height: 30px;
     box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
     border-color: rgba(255, 255, 255, 0.248);
@@ -56,8 +30,8 @@
 .btnbooknow{
     width: 150px;
     height: 40px;
-    margin-top: 40px;
-    box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
+    margin-top: 50px;
+    box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.185);
     border-color: rgba(255, 255, 255, 0.248);
 }
 
@@ -75,39 +49,14 @@
         border-radius: 10px;
         
     }
-    .dateboxes{
-  display: flex;
-  gap: 30px;
-    }
+   
     .location-box{
         margin-left: 0px;
         margin-top: 22px;
         border-radius: 20px;
         
     }
-    
-.date-box{
-    width: 135px;
-    margin-top: 0px;
-}
-
-.date-box1{
-    width: 135px;
-    margin-top: 0px;
-}
-.checkindatepicker{
-    height: 50px;
-   
-}
-.checkinbox1{
-    height: 37px;
-    width: 135px;
-    
-}
-.checkoutbox1{
-    height: 37px;
-    width: 135px;
-}
+ 
 
 
 .locationselector{
@@ -129,46 +78,10 @@
 }
 
 /* 
-@media only screen and  (max-width:1200px){
-
-    .checkinform{
-       
-        margin-left: 3%;
-        gap: 20px;
-        width: 996px;
-    }
-
-    .locationselector{
-        width: 300px;
-        height: 30px;
-       
-    }
-
-    .checkinbox1{
-        height: 35px;
-        width: 200px;
-        
-       
-    }
-    .checkoutbox1{
-        height: 35px;
-        width: 200px;
-       margin-left: 0%;
-        box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
-        border-color: rgba(255, 255, 255, 0.248);
-    }
-    .btnbooknow{
-        width: 120px;
-        height: 40px;
-        margin-top: 40px;
-      
-    }
-} */
-
 @media only screen and (min-width:1210px) {
     .checkinform{
         display: flex;
-        margin-left: 15%;
+       
         gap: 30px;
         width: 1080px;
         height: 120px;
@@ -226,4 +139,4 @@
    margin-top: 51px;
    box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
 }
-  }
+  } */

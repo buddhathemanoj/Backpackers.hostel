@@ -159,4 +159,15 @@ router.post('/login', async (req, res) => {
   res.json({ status: "error", error: "Invalid Password" });
 });
 
+
+
+router.get('/getallusers', async(req,res)=>{
+
+  try {
+    const users = await User.find()
+    res.send(users)
+  } catch (error) {
+    return res.status(400).json({message:error});
+  }
+} )
 module.exports = router;

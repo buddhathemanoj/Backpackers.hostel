@@ -33,4 +33,17 @@ router.get("/getcities/:city", async(req,res)=>{
         return res.status(400).json({message:error});
     }
 });
+
+
+router.post('/addcity' , async (req,res)=>{
+    try {
+      const newcity = new City(req.body)
+      await newcity.save()
+  
+      res.send('new city addedd successfully')
+    } catch (error) {
+      return res.status(400).json({message:error});
+      
+    }
+  })
 module.exports = router;

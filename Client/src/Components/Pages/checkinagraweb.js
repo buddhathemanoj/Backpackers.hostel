@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import DatePicker from "react-datepicker";
@@ -40,6 +40,8 @@ import { Error } from "@mui/icons-material";
 
 import axios from "axios";
 export const Checkinagraweb = () => {
+
+   
 
   const { city } = useParams();
 

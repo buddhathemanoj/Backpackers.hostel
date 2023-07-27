@@ -1,5 +1,6 @@
 import React, { useState , useEffect } from 'react';
 import { Radio, Space, Tabs } from 'antd';
+import { Divider,  Tag } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 import '../Styles/Bookroom.css'
@@ -44,62 +45,63 @@ export default Profilescreen;
 const user = JSON.parse(localStorage.getItem("currentUser"))
 
 export function Mybookings(){
-    const [Rooms , setRooms] = useState([]);
-    const [bookings , setBookings] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [showCancelBtn, setShowCancelBtn] = useState(true); 
-    const [showSuccess, setShowSuccess] = useState(false); 
-    const [showFailure, setShowFailure] = useState(false);
-    useEffect(() => {
-        const fetchBookings = async () => {
-          try {
-            setLoading(true);
-            const response = await axios.post("http://localhost:5001/api/bookings/getbookingsbyuserid", { userid: user.data.currentUser._id });
-            const bookingsData = response.data; // Assuming the data you need is in the 'data' property
-            console.log(bookingsData);
-            setBookings(bookingsData);
-            setLoading(false);
-            fetchRoomData(bookingsData);
-          } catch (error) {
-            console.log(error);
-            setLoading(false);
-          }
-        };
-    
-        fetchBookings();
-      }, []);
-
-
-
-      const fetchRoomData = async (bookingsData) => {
-        try {
-          const roomData = await Promise.all(bookingsData.map(async (booking) => {
-            const response = await axios.post("http://localhost:5001/api/rooms/getroombyid", { roomid: booking.roomid });
-            return response.data;
-          }));
-          console.log(roomData);
-          setRooms(roomData);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      
-      async function cancelbooking(bookingid, roomid) {
+  const [Rooms , setRooms] = useState([]);
+  const [bookings , setBookings] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [showCancelBtn, setShowCancelBtn] = useState(true); 
+  const [showSuccess, setShowSuccess] = useState(false); 
+  const [showFailure, setShowFailure] = useState(false);
+  useEffect(() => {
+      const fetchBookings = async () => {
         try {
           setLoading(true);
-          const result = await axios.post("http://localhost:5001/api/bookings/cancelbooking", { bookingid, roomid });
+          const response = await axios.post("http://localhost:5001/api/bookings/getbookingsbyuserid", { userid: user.data.currentUser._id });
+          const bookingsData = response.data; 
+          console.log(bookingsData);
+          setBookings(bookingsData);
           setLoading(false);
-          const response = result.data;
-          console.log('cancel response ', response);
-          setShowCancelBtn(false); // Hide the cancel button after successful cancellation
-          setShowSuccess(true); // Show the success popup
+          fetchRoomData(bookingsData);
         } catch (error) {
           console.log(error);
-          // Handle the failure case and show the failure popup if needed
-          setShowFailure(true);
+          setLoading(false);
         }
-      }
+      };
+  
+      fetchBookings();
+    }, []);
 
+
+
+    const fetchRoomData = async (bookingsData) => {
+      try {
+        const roomData = await Promise.all(bookingsData.map(async (booking) => {
+          const response = await axios.post("http://localhost:5001/api/rooms/getroombyid", { roomid: booking.roomid });
+          return response.data;
+        }));
+        console.log(roomData);
+        setRooms(roomData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    
+    async function cancelbooking(bookingid, roomid) {
+      try {
+        setLoading(true);
+        const result = await axios.post("http://localhost:5001/api/bookings/cancelbooking", { bookingid, roomid });
+        setLoading(false);
+        const response = result.data;
+        console.log('cancel response ', response);
+        setShowCancelBtn(false); 
+        setShowSuccess(true); 
+      } catch (error) {
+        console.log(error);
+       
+        setShowFailure(true);
+      }
+    }
+
+  
     return(
         <div className='row'>
         <div className='col-md-6'>
@@ -127,13 +129,14 @@ export function Mybookings(){
           <p><b>To Date:</b> {moment(booking.todate).format("DD-MM-YYYY ")}</p>
                     <p><b>Total Days:</b> {booking.totaldays}</p>
                     <p><b>Total Amount:</b> {booking.totalamount}</p>
-                    <p><b>Status:</b> {booking.status=='booked' ? "CONFIRMED" : "CANCELLED"}</p>
+                    
 
-                    {showCancelBtn && ( // Render the cancel button only if showCancelBtn is true
-                    <div className='text-right'>
-                      <button className='btn btn-primary' onClick={() => { cancelbooking(booking._id, booking.roomid) }}>Cancel Booking</button>
-                    </div>
-                  )}
+                    <p><b>Status:</b> {booking.status=='booked' ? <Tag color="green">CONFIRMED</Tag>  : <Tag color="red">CANCELLED</Tag> }</p>
+                    {booking.status === 'booked' && ( 
+          <div className='text-right'>
+            <button className='btn btn-primary' onClick={() => { cancelbooking(booking._id, booking.roomid) }}>Cancel Booking</button>
+          </div>
+        )}
                   </div>
                 </div>
               ))}
@@ -151,7 +154,7 @@ export function Mybookings(){
         </Modal.Footer>
       </Modal>
 
-      {/* Failure Popup - Add similar code if you want to show a failure popup */}
+      {/* Failure Popup  */}
       <Modal show={showFailure} onHide={() => setShowFailure(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Booking Cancellation Failed</Modal.Title>
