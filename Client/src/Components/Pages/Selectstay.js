@@ -1,40 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
+import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../Styles/Selectstay.css'
-
+import axios from 'axios';
 const Selectstay=()=> {
-    const [stay,setStay] = useState(null);
-    const [checkInDate,setCheckInDate] = useState(new Date());
-    const [checkOutDate,setCheckOutDate] =useState(null)
+  const [selectedLocation, setSelectedLocation] = useState(null);
+    const [locationOptions, setLocationOptions] = useState([]);
 
-    const locationOptions=[
-        {value: "kammanahalli", label:"Kammanahalli"},
-        {value: "ulsoor", label:"Ulsoor"},
-        {value: "koramangala", label:"Koramangala"},
-        {value: "commercialstreet", label:"Commercial Street"},
-        {value: "mgroad", label:"MG Road"},
-        {value: "bommanahalli", label:"Bommanahali"}
-    ];
-    useEffect(()=>{
-        const checkoutdate = new Date(checkInDate);
-        checkoutdate.setDate(checkoutdate.getDate()+2);
-        setCheckOutDate(checkoutdate);
-    },[checkInDate]);
+    
+ 
+    useEffect(() => {
+      const fetchWorkCities = async () => {
+        try {
+          const response = await axios.get("http://localhost:5001/api/work/checkin/getallworkforselection");
+          const workcities = response.data;
+          setLocationOptions(workcities);
+        } catch (error) {
+          console.log("Error fetching work cities:", error);
+        }
+      };
+  
+      fetchWorkCities();
+    }, []);
 
     const handleLocationChange = (selectedOption) => {
-        setStay(selectedOption);
-      };
-    
-      const handleCheckInDateChange = (date) => {
-        setCheckInDate(date);
-      };
-    
-      const handleCheckOutDateChange = (date) => {
-        setCheckOutDate(date);
-      };
-    
+      setSelectedLocation(selectedOption);
+    };
+      const isFormValid = selectedLocation !== null;
+     
 
 
 
@@ -47,29 +42,25 @@ const Selectstay=()=> {
         <Select
          className='stayselector'
           options={locationOptions}
-          value={stay}
+          value={selectedLocation}
           onChange={handleLocationChange}
         />
       </div>
-      <div className="staydate">
-        <label>Check-in Date:</label><br/>
-        <DatePicker
-         className='selectdatein'
-          selected={checkInDate}
-          onChange={handleCheckInDateChange}
-        />
-      </div>
-      <div className="staydate1">
-        <label >Check-out Date:</label><br/>
-        <DatePicker
-        className='selectdateout'
-          selected={checkOutDate}
-          onChange={handleCheckOutDateChange}
-        />
-      </div>
+  
       <br/>
       </div>
-      <button  className='staybtn' >BOOK NOW</button>
+      {selectedLocation && (
+        <Link to={`/workation/checkin/${selectedLocation.value}`}>
+          <button
+            
+            className='staybtn'
+            disabled={!isFormValid}
+          >
+            BOOK NOW
+          </button>
+        </Link>
+      )}
+      
     
     </div>
     </>

@@ -1,43 +1,3 @@
-.stayform{
-    display: flex;
-    width: 100%;
-    font-family: Poppins, sans-serif;
-}
-.select-stay{
-    
-    width: 300px;
-    margin: 2%;
-    height:50px ;
-}
-.stayselector{
-    width: 300px;
-    height: 30px;
-}
-.staydate{
-    
-    width: 200px;
-    margin-top:2%;
-    margin-left: 5px;
-    height: 70px;
-}
-.selectdatein{
-    
-    width: 180px;
-    height: 30px;
-}
-.staydate1{
-    
-    width: 200px;
-    margin-top: 2%;
-    margin-left: 5px;
-    height: 60px;
-}
-.selectdateout{
-    width: 180px;
-    height: 30px;
-    
-    
-}
 .cord{
     background-color: whitesmoke;
     margin-left: 20px;
@@ -46,6 +6,22 @@
     height: 150px;
     margin-top: 70px;
 }
+/* .stayform{
+    display: flex;
+    width: 100%;
+    font-family: Poppins, sans-serif;
+} */
+.select-stay label{
+   padding-left: 3%;
+}
+.stayselector{
+    width: 96.2%;
+    height: 30px;
+    margin-left: 2%;
+    
+}
+
+
 .staybtn{
     margin-left: 2%;
     height: 50px;

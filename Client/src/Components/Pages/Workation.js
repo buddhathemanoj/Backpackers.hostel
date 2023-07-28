@@ -33,12 +33,12 @@ import agra2 from "../Assets/agra/agra2.svg";
 import agra3 from "../Assets/agra/agra3.svg";
 import agra4 from "../Assets/agra/agra4.svg";
 import "../Styles/Checkinwebagra.css";
-import { Bookroom } from "../Hostelrooms/Bookroom";
+import { WorkationBookroom } from "../Hostelrooms/WorkationBookroom";
 import { Loader } from "../Hostelrooms/Loader";
 import { Error } from "@mui/icons-material";
 
 import axios from "axios";
-export const Checkinagraweb = () => {
+export const Workation = () => {
 
    
 
@@ -256,7 +256,7 @@ export const Checkinagraweb = () => {
         <h3> AVAILABILITY</h3>
         <br />
         <div >
-        <Bookroom city={city} />
+        <WorkationBookroom city={city} />
         </div>
         <br />
       </div>

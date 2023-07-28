@@ -3,7 +3,7 @@
 
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
+import { Workation } from "../Pages/Workation";
 import Mainnav from "../Pages/Mainnav";
 import Loginform from "../Pages/Login";
 import Hostels from "../Pages/Hostels";
@@ -42,7 +42,7 @@ function Routesmain() {
           <Route path="/blogs" element={<Blogs />} />
           {/* <Route path="/hostels/agra" element={<Agra />} /> */}
           <Route path="/checkin/:city" element={<> <Mainnav /> <Checkinagraweb /><Footer /></>} />
-      
+          <Route path="/workation/checkin/:city" element={<> <Mainnav /><Workation/> <Footer /></>} />
           <Route path="/book/:roomid" element={<Bookingscreen />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

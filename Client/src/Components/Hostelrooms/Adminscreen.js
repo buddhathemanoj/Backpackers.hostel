@@ -417,14 +417,31 @@ async function handleAddcityselection(){
      } catch (error) {
         console.log(error)   
      }
+
+
+     const newworkationcityselection = {
+      value,
+      label
+    }
+    try {
+      const response1 = await axios.post("http://localhost:5001/api/work/checkin/newworkcheckinselection", newworkationcityselection )
+          const result1 = response1.data
+       console.log(result1)
+    } catch (error) {
+      console.log(error)   
+    }
+    
+
+
 }
 
 
 
 return (
     <div>
+       <h2>To add the city page</h2> 
  <div className="row">
-   
+
    <div className="col-md-5">
      <div className=" text-center">
 <input type="text" className="form-control" placeholder="City Name" value={city} onChange={(e)=>{setCity(e.target.value)}} />
@@ -478,7 +495,7 @@ return (
 
        <div className="row">
         <div className="col-md-10">
- 
+          <h2>To add the City & Workation name in Dropdown Selection</h2>           
         <input type="text" className="form-control" placeholder="city name in smallcase"  value={value} onChange={(e)=>{setValue(e.target.value)}} />
         <input type="text" className="form-control" placeholder="city name in capitalcase"  value={label} onChange={(e)=>{setLabel(e.target.value)}} />
       
@@ -489,6 +506,8 @@ return (
         </div>
 
        </div>
+
+       
 
  </div>
 );

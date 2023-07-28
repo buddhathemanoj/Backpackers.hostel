@@ -13,10 +13,13 @@ import { Error } from "@mui/icons-material";
 
 
 
-export const Bookroom = ({city}) => {
+export const WorkationBookroom = ({city}) => {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const [duplicateRooms, setDuplicateRooms] = useState([]);
   const { RangePicker } = DatePicker;
   const [fromDate, setFromDate] = useState(null);
@@ -43,16 +46,29 @@ export const Bookroom = ({city}) => {
     fetchData();
   }, [city]);
 
+  function disabledDate(current) {
+    return current && current < moment().endOf("day").add(1, 'day'); // Disable dates before tomorrow
+  }
+
   function filterByDate(dates) {
     if (dates && dates.length === 2) {
-      setFromDate(dates[0].startOf("day").toDate());
-      setToDate(dates[1].endOf("day").toDate());
+      const fromDate = new Date(dates[0]);
+      const toDate = new Date(dates[1]);
+
+      // Check if the difference between fromDate and toDate is at least 6 days
+      if (toDate.getTime() - fromDate.getTime() >= 5 * 24 * 60 * 60 * 1000) {
+        setFromDate(fromDate);
+        setToDate(toDate);
+        setErrorMessage(null); // Clear any previous error message
+      } else {
+        setErrorMessage("Minimum date range should be 6 days.");
+      }
     } else {
       setFromDate(null);
       setToDate(null);
+      setErrorMessage(null); // Clear error message when no date range is selected
     }
   }
-
   useEffect(() => {
     if (fromDate && toDate) {
       const filteredRooms = duplicateRooms.filter((room) => {
@@ -84,10 +100,15 @@ export const Bookroom = ({city}) => {
 
   return (
     <div >
-      <div style={{ marginLeft: "12%" }} className="col-md-3">
-        <RangePicker format="DD-MM-YYYY" onChange={filterByDate} />
+      <div  className="col-md-3">
+      <DatePicker.RangePicker
+          format="DD-MM-YYYY"
+          onChange={filterByDate}
+          disabledDate={disabledDate}
+        />
       </div>
-      <div className="row">
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      <div className="row ">
         {loading ? (
           <Loader />
         ) : error ? (
