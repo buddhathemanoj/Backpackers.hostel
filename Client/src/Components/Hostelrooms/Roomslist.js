@@ -22,7 +22,7 @@ export const Roomslist = ({ room , fromdate, todate }) => {
 
 
     <div className="row boxshaows ">
-      <div key={room._id} className="col-md-4">
+      <div key={room._id} className="col-md-5">
         <img src={room.imageurls[0]} className="smallimghostel" />
       </div>
       <div id="roomdetailss" className="col-md-7">

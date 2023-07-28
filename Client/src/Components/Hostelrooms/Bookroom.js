@@ -83,7 +83,7 @@ export const Bookroom = ({city}) => {
   }, [fromDate, toDate, duplicateRooms]);
 
   return (
-    <div>
+    <div >
       <div style={{ marginLeft: "12%" }} className="col-md-3">
         <RangePicker format="DD-MM-YYYY" onChange={filterByDate} />
       </div>

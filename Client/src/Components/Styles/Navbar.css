@@ -2,15 +2,13 @@
     display: flex;
     list-style: none;
     gap: 5rem;
-    margin-left: 440PX;
+    margin-left: 340PX;
     font-size: 22px;
     font-family: 'Poppins', sans-serif;
     z-index: 999;
     margin-top: 10px;
     
 }
-
-  
 
 .nav-link {
     text-decoration: none;
@@ -46,6 +44,7 @@
     background-color: white;
     box-shadow: 0px 21px 31px 3px rgba(0,0,0,0.1);
     padding: 5PX;
+    width: 100% !important;
     display: flex;
    
 }
@@ -56,10 +55,10 @@
 
 
 
-
+/*  
 @media only screen and (max-width: 767px) {
   .links {
-      /* Update CSS rules for mobile devices here */
+      
       margin-left: -210px;
       display:-ms-grid;
       margin-top: 50px;
@@ -81,7 +80,7 @@
 }
 
   .Navbar {
-      /* Update CSS rules for mobile devices here */
+     
       height: 80px;
       width: 100%;
   }
@@ -96,18 +95,18 @@
   color: rgb(157, 157, 240);
 }
 
-}
+} */
 
 @media only screen and (min-width:1210px) {
   .links{
     display: flex;
     list-style: none;
     gap: 2rem;
-    margin-left: 160PX;
+    margin-left: 60PX;
     font-size: 22px;
     font-family: 'Poppins', sans-serif;
     z-index: 999;
-    margin-top: 10px;
+    margin-top: 2px;
     
 }
 .nav-link{
@@ -130,6 +129,6 @@
 .dropdown-toggle{
   width: 160px !important;
   border: 0px solid !important;
-  background-color: rgb(135, 129, 129) !important;
+  background-color: rgb(68, 61, 61) !important;
 }
-}
+} 

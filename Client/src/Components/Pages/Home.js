@@ -9,8 +9,10 @@ import '../Styles/Home.css'
 import NEWSimg from '../Assets/newsltter.svg'
 import CheckInForm from './Checkin'
 export default function Home() {
+  // const user = JSON.parse(localStorage.getItem("currentUser"));
+ 
   return (
-    <div style={{padding:'0 8%'}}>
+    <div style={{padding:'0 9%'}}>
        
         <br/>
         <br/>

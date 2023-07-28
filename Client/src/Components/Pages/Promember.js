@@ -9,7 +9,7 @@ import Propic1 from '../Assets/promem2.jpeg'
 import Propic2 from '../Assets/promem3.jpeg'
 export default function MembershipJoin() {
   return (
-    <div style={{overflow:'scroll'}} className="membership-join">
+    <div  className="membership-join">
 
       <div className="card">
 

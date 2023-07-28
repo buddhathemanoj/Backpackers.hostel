@@ -1,9 +1,9 @@
 import React from 'react'
-import Mainnav from './Mainnav'
+
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import Offer from './Offer'
-import { Footer } from './Footer'
+
 import Hostel1 from '../Assets/hostel1.jpeg'
 import Hostel2 from '../Assets/hostel2.jpeg'
 import Hostel3 from '../Assets/hostel3.jpeg'
@@ -24,7 +24,7 @@ export default function Hostels() {
   return (
     <div>
 
-      <Mainnav/>
+      
       <Offer/>
         <div>
              
@@ -261,7 +261,7 @@ export default function Hostels() {
           </div>
 <br/>
 <br/>
-          <Footer/>
+          
     </div>
   )
 }

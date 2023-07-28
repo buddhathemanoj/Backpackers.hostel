@@ -16,95 +16,30 @@
     border-radius: 20px;
     border-color: rgb(202, 188, 188);
 }
-.date-picker-wrapper{
-    display: flex;
-    justify-content: space-between;
-}
-
-/* .date-picker{
-    width: 120px;
-   
-}
-.date-pickerr{
-    width: 120px;
-} */
-.datepickerr{
-    width: 150px;
-
-  border-radius: 25px 0 0 25px;
-  border-color: rgba(255, 255, 255, 0);
-  background-color: rgb(255, 255, 0);
-  margin-left: 10px;
-  justify-content: center;
-    text-align: center;
-    height: 50px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-}
-
-.datepickerr1{
-    width: 150px;
-    height: 50px;
-    margin-right: 10px;
-    border-radius: 0 25px 25px 0   ;
-    border-color: rgba(255, 255, 255, 0);
-    background-color: rgb(255, 255, 0);
-    justify-content: center;
-    text-align: center;
-   
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-}
-.total-price{
-    background-color: white;
-    font-size: 20px;
-    margin-bottom: 320%;
-    width: 450px;
-    padding: 20px;
-    height: 500px;
-    border-radius: 15px;
-}
-.btnaddd{
-    width: 35px;
-    margin-right: 5px;
-    margin-left: 5px;
-    border-color: rgba(113, 255, 5, 0.534);
-    box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
-    background-color: rgb(12, 12, 12);
-    color: white;
-}
-.book-now-button{
-    height: 50px;
-    width: 190px;
-    border-color: rgba(255, 255, 255, 0);
-    background-color: yellow;
-}
 
 .grid-agra-container{
     display:grid;
     grid-template-columns: repeat(2, 1fr);
-    margin-left: 15%;
-    margin-right: 10%;
     flex-wrap: wrap;
+   
     gap: 20px;
-    width: 1536px;
     height: 717px;
     
  }
  .groupmainpic{
+    max-width: 940px;
     border-radius: 5px;
  }
 .grudpicside{
     border-radius: 5px;
-    width:347px;
-    height:231px;
+    width:300px;
+    
     margin-bottom: 13px;
 
 }
 .belowimagespara{
     display: flex;
-    margin-left: 15%;
-    margin-right: 11%;
+    margin-top: 0px;
   justify-content: space-between;   
 }
     .h1belowimages{
@@ -112,36 +47,33 @@
         font-size: 44px;
     }
     .btnviewrooms{
-        width: 340px;
+        width: 300px;
         height: 39px;
         font-family: 'Poppins', sans-serif;
         font-size: 18px;
         box-shadow: 11px 12px 16px 0px rgba(0, 0, 0, 0.307);
     border-color: rgba(255, 255, 255, 0.248);
-    margin-left: 2%;
-        margin-right: 8%;
+   
         background-color: yellow;
     }
 
     .parmember{
         line-height: 2rem;
-        margin-left: 15%;
-       margin-right: 14%;
+      
        color: #919191;
        font-family: 'Poppins', sans-serif;
 
 
     }
     .amenityhead{
-        margin-left: 15%;
+       
         font-size: 30px;
         font-family: 'Poppins', sans-serif;
     }
     .amenity{
         display: flex;
-        margin-left: 15%;
-        margin-right: 14%;
-        gap: 5.3rem;
+       /* justify-content: space-between; */
+        gap: 3.3rem;
         font-size: 14px;
     }
     .amnpic{
@@ -153,15 +85,14 @@
     }
     .grid-container-whatwedo{
         display:grid;
+        column-gap: 20px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    max-width: 1536px;
-    margin-left: 15%;
-    margin-right: 10%;
+  
+ 
     }
     .grid-what-wedo{
-       width: 344px;
-       height: 162px;
+      
        border: 1px salmon solid ;
        border-color: #919191;
        border-radius: 10px
@@ -170,7 +101,7 @@
         display: flex;
     }
     .paraagrawhatwedo{
-        margin-left: 15%;
+       
         font-family: 'Poppins', sans-serif;
         font-size: 44px;
     }
@@ -182,7 +113,7 @@
     }
     .parawhwedo{
         font-family: 'Poppins', sans-serif;
-        font-size: 24px;
+        font-size: 22px;
         margin-top: 25px;
         margin-left: 13px;
     }

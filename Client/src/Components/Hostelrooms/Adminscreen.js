@@ -4,6 +4,10 @@ import { Tabs } from "antd";
 import { Table, Input } from "antd";
 import { Loader } from "./Loader";
 const { TabPane } = Tabs;
+
+const user = JSON.parse(localStorage.getItem("currentUser"));
+console.log(user)
+
 export const Adminscreen = () => {
   return (
     <div className="mt-3 ml-3 boxshaows">

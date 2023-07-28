@@ -31,17 +31,15 @@ export default function Membership() {
       <div style={{ position: 'fixed', 
       width:'100%',
       overflow: 'hidden' ,
+     
       boxShadow:" 11px 12px 16px 0px rgba(0, 0, 0, 0.307)"
       
     }}>
-        <Mainnav />
+      
       </div>
       <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <div className='membership'>
+  
+      <div className='membership'  style={{padding:'0 3%'}}>
 
       <div className="headontainer">
       <h1 className="memberheadfirst">The SleepSafari Commune</h1>
@@ -91,7 +89,10 @@ So, why wait? Take the leap and reward yourself with The Hosteller Membership. A
 <br/>
 <br/>
 <br/>
-<button className='btnmemberbooking'>Become a Member</button>
+<div style={{padding:'0 3%'}}>
+  <button   className='btnmemberbooking'  >Become a Member</button>
+
+</div>
 <br/>
 <br/>
      <div className='mainbenifits'>
@@ -143,7 +144,7 @@ So, why wait? Take the leap and reward yourself with The Hosteller Membership. A
         <br/>
       
         <div className="grid-cntent">
-          <h3 id='gridbnn1h1'>Guaranteed Discounts</h3>
+          <h3 id='gridbn1h1'>Guaranteed Discounts</h3>
           <p id='gridbn1p1'> Get attractive discounts on every booking  </p>
         </div>
 
@@ -212,20 +213,20 @@ So, why wait? Take the leap and reward yourself with The Hosteller Membership. A
         <br/>
       
         <div className="grid-cntent">
-          <h3 id='gridbnbkout1h1'>No Blackout Dates</h3>
+          <h3 id='gridbn1h1'>No Blackout Dates</h3>
           <p id='gridbn1p1'>Books hostels anytime, anywhere for anyone easily  </p>
         </div>
 
         
         </div>
     </div>
-  );
+  
 
 
      </div>
 <br/>
 <br/>
-<div>
+<div  style={{padding:'0 3%'}}>
   <MembershipJoin/>
 </div>
 <br/>
@@ -234,7 +235,7 @@ So, why wait? Take the leap and reward yourself with The Hosteller Membership. A
 <br/>
     
     <div>
-    <Footer/>
+   
     </div>
 
 

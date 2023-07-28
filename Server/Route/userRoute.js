@@ -159,7 +159,22 @@ router.post('/login', async (req, res) => {
   res.json({ status: "error", error: "Invalid Password" });
 });
 
+router.post('/getUserId', async (req, res) => {
+  const { email } = req.body;
 
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json({ status: "ok", userId: user._id });
+  } catch (error) {
+    console.error("Error fetching user ID:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 router.get('/getallusers', async(req,res)=>{
 

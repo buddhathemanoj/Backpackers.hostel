@@ -24,15 +24,15 @@
 }
 .img1{
     /* flex-direction: row; */
-    width: 750px;
-    height: 700px;
+    width: 650px;
+    height: 650px;
 }
 .con-img2{
     flex: 1;
 }
 .img2{
     /* flex-direction: row; */
-    width: 750px;
+    width: 650px;
     height: 600px;
 }
 .con2 h3{

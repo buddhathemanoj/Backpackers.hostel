@@ -1,6 +1,9 @@
+
+
+
 import React from "react";
-import { BrowserRouter ,Router,Routes ,Route } from "react-router-dom";
-import Maincheckinagra from "../Pages/Maincheckinagra";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
 import Mainnav from "../Pages/Mainnav";
 import Loginform from "../Pages/Login";
 import Hostels from "../Pages/Hostels";
@@ -10,43 +13,55 @@ import Blogs from "../Pages/Blogs";
 import Home from "../Pages/Home";
 import { Footer } from "../Pages/Footer";
 import Membership from "../Pages/Membership";
-import { Login } from "../Userauth/Login"
+import { Login } from "../Userauth/Login";
 import { Agra } from "../Pages/Agra";
-import { Register } from "../Pages/Register.js";
+
 import { Bookingscreen } from "../Hostelrooms/Bookingscreen";
 import { Signup } from "../Userauth/Signup";
 import Profilescreen from "../Hostelrooms/Profilescreen";
 import { Adminscreen } from "../Hostelrooms/Adminscreen";
-function Routesmain (){
+import { Checkinagraweb } from "../Pages/checkinagraweb";
+
+function Routesmain() {
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+  const isUserAdmin = user?.data?.currentUser?.isAdmin;
   
-    return(
-<div>
+  // Rest of your code
   
-  <BrowserRouter>
-    
+
+  return (
+    <div>
+      <BrowserRouter>
         <Routes>
-        <Route exact path="/" element={<> <Mainnav/> <Home/> <Footer/></>} />
-        <Route exact path="/home" element={ <Home/> } />
-          <Route exact path="/destinations" element={<Destinations />} />
-          <Route exact path="/hostels" element={<Hostels />} />
-          <Route exact path="/workations" element={<Workations />} />
-          <Route exact path="/membership" element={<Membership />} />
-          <Route exact path="/blogs" element={<Blogs />} />
-          <Route exact path="/hostels/agra" element={<Agra />} />
-          <Route exact path="/checkin/:city" element={<Maincheckinagra />} />
-          <Route exact path="/register" element={<Register />} />
+          <Route path="/" element={<> <Mainnav /> <Home /> <Footer /></>} />
+          <Route path="/home" element={<> <Mainnav /> <Home /> <Footer /></>} />
+          <Route path="/destinations" element={<> <Mainnav /><Destinations /> <Footer /></>} />
+          <Route path="/hostels" element={<> <Mainnav /><Hostels /> <Footer /></>} />
+          <Route path="/workations" element={<> <Mainnav /><Workations /> <Footer /></>} />
+          <Route path="/membership" element={<> <Mainnav /><Membership /><Footer /></>} />
+          <Route path="/blogs" element={<Blogs />} />
+          {/* <Route path="/hostels/agra" element={<Agra />} /> */}
+          <Route path="/checkin/:city" element={<> <Mainnav /> <Checkinagraweb /><Footer /></>} />
+      
           <Route path="/book/:roomid" element={<Bookingscreen />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/myprofile" element={<Profilescreen />} />
-          <Route exact path="/admin" element={<Adminscreen />} />
-         
-
-
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/myprofile" element={<> <Mainnav /><Profilescreen /></>} />
+          {isUserAdmin ? (
+            <Route exact path="/admin" element={<> <Mainnav /><Adminscreen /><Footer /></>} />
+          ) : (
+            <Route
+              path="/admin"
+              element={<Navigate to="/"/>}
+            />
+          )}
         </Routes>
-        </BrowserRouter>
-    
-</div>
-    )
+      </BrowserRouter>
+    </div>
+  );
 }
+
 export default Routesmain;
+
+
+

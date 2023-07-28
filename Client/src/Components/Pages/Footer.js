@@ -7,7 +7,7 @@ export const Footer = () => {
     <div className='footerst'>
 
     <div className='logoft'>
-        <br/>
+       
         <h2 className='footlogo'>SLEEPSAFARI</h2>
        
         <div className='linksfootinsta'>
@@ -20,7 +20,7 @@ export const Footer = () => {
     </div>
 <hr></hr>
 <div className='ftlinks'>
-  <diV className='mobile'>
+  
 <div className='navlinks'>
 <h4 className='headft'>Destinations</h4>
   <nav>
@@ -48,8 +48,8 @@ export const Footer = () => {
         </ul>
     </nav>
 </div>
-</diV>
-<diV className='mobile'>
+
+
 <div  className='navlinks'>
 <h4 className='headft'>Policies</h4>
     <nav>
@@ -72,7 +72,7 @@ export const Footer = () => {
     <p>East Street</p>
     <p>Chennai-620027</p>
 </div>
-</diV>
+
 </div>
 
 

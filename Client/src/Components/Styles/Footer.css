@@ -41,65 +41,6 @@
 
 
 
-
-
-@media only screen and (max-width: 767px) {
-
-    .logoft{
-        margin-left: 1%;
-        height:60px;
-        display: flex;
-        gap: 10px;
-        
-       
-    }
-    .footlogo{
-        margin-right: 0%;
-        margin-top: 29px;
-    }
-    .footerst{
-        width: 100%;
-   }
-   .mobile{
-    display: flex;
-    gap: 25px;
-   }
-   .ftlinks{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    
-   margin-left: 0%;
-    gap: 0rem;
-   
-}
-
-.links1{
-    list-style: none;
-    color: white;
-    font-size: 14px;
-    text-decoration: none;
-    line-height: 35px;
-    margin-left: -10px;
-   }
-   .headft{
-       margin-left: 20px;
-       color: yellow;
-   }
-   .navlinks{
-       text-align: initial;
-   }
-   .linksfootinsta{
-    display: flex;
-    
-       gap: 0rem;
-   }
-   
-   
-}
-/* 
-
-
 @media only screen and  (max-width:1200px){
 
     .footerst{
@@ -126,9 +67,7 @@
     margin-left: 60px;
     color: yellow;
 }
-/* } */
-
-/* 
+}
 @media only screen and (min-width:1210px) {
    .logoft{
        margin:auto;
@@ -156,4 +95,7 @@
       justify-content: right;
        gap: 2rem;
    }
-}  */
+   .mobile{
+    display: flex;
+   }
+}  

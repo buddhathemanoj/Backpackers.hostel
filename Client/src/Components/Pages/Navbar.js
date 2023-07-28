@@ -4,6 +4,7 @@ import "../Styles/Navbar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 function Navbar() {
+
 function handleLogout(){
   localStorage.removeItem('currentUser')
   window.location.href="/login"
@@ -94,7 +95,7 @@ function handleLogout(){
                 Blogs
               </Link>
             </li>
-            {user ? (
+            {user && user.data && user.data.currentUser ? (
               <><div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <FontAwesomeIcon style={{ marginRight: '13px' }} icon={faUser} />{user.data.currentUser.name}

@@ -92,8 +92,8 @@ export const Checkinagraweb = () => {
       ) : error ? (
         <Error />
       ) : (
-        <div>
-          <Mainnav />
+        <div style={{padding:'0 3%'}}>
+          
       <br />
       <br />
       <br />
@@ -117,8 +117,8 @@ export const Checkinagraweb = () => {
         </div>
       </div>
 
-      <br />
-      <br />
+     
+     
 
       <div className="belowimagespara">
         <p className="h1belowimages">
@@ -157,52 +157,52 @@ export const Checkinagraweb = () => {
       </div>
 
       <div className="amenity">
-        <diV>
+        <diV >
           <img className="amnpic" src={amn} alt="amnn" />
           <p className="amenitysmallpara">cafe</p>
         </diV>
-        <div>
+        <div style={{alignItems:'center'}}>
           <img className="amnpic" src={amn1} alt="amnn" />
           <p className="amenitysmallpara">CCTV</p>
         </div>
-        <div>
+        <div style={{alignItems:'center'}}>
           <img className="amnpic" src={amn2} alt="amnn" />
           <p className="amenitysmallcommon">Common Area</p>
         </div>
-        <div>
+        <div style={{alignItems:'center'}}>
           <img className="amnpic" src={amn3} alt="amnn" />
           <p className="amenitysmallpara">Front Desk</p>
         </div>
 
-        <div>
+        <div style={{alignItems:'center'}}>
           <img className="amnpic" src={amn4} alt="amnn" />
           <p className="amenitysmallpara">House keeping</p>
         </div>
-        <div>
+        <div style={{alignItems:'center'}}>
           <img className="amnpic" src={amn5} alt="amnn" />
           <p className="amenitysmallpara"> Indoor games</p>
         </div>
-        <div>
+        <div style={{alignItems:'center'}}>
           <img className="amnpic" src={amn6} alt="amnn" />
           <p className="amenitysmallpara">PArking</p>
         </div>
-        <div>
+        <div style={{alignItems:'center'}}>
           <img className="amnpic" src={amn7} alt="amnn" />
           <p className="amenitysmallpara">Pet freindly</p>
         </div>
-        <div>
+        <div style={{alignItems:'center'}}>
           <img className="amnpic" src={amn8} alt="amnn" />
           <p className="amenitysmallpara">Power backup</p>
         </div>
-        <div>
+        <div style={{alignItems:'center'}}>
           <img className="amnpic" src={amn9} alt="amnn" />
           <p className="amenitysmallpara">Wi_Fi</p>
         </div>
-        <div>
+        <div style={{alignItems:'center'}}>
           <img className="amnpic" src={amn10} alt="amnn" />
           <p className="amenitysmallpara">Water dispenser</p>
         </div>
-        <div>
+        <div style={{alignItems:'center'}}>
           <img className="amnpic" src={amn11} alt="amnn" />
           <p className="amenitysmallpara">Air conditioner</p>
         </div>
@@ -253,17 +253,15 @@ export const Checkinagraweb = () => {
       <br />
       <br />
 
-      <div className="mainboxes" style={{ display: "flex", gap: "190px" }}>
+      <div>
         <h3> AVAILABILITY</h3>
         <br />
-        <div className="col-md-9 mt=2">
+        <div >
         <Bookroom city={city} />
         </div>
         <br />
       </div>
-      <div>
-      <Footer />
-          </div>
+      
         </div>
       )}
     </>

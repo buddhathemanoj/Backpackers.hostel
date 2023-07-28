@@ -1,6 +1,6 @@
 .checkinform{
     display: flex;
-  
+   width: 1080px;
     gap: 30px;
 
     height: 120px;

@@ -1,5 +1,5 @@
 import React from 'react'
-import Mainnav from './Mainnav';
+
 import '../Styles/Workation.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faFlag } from "@fortawesome/free-solid-svg-icons";
@@ -15,15 +15,13 @@ export default function Workations() {
     boxShadow:" 11px 12px 16px 0px rgba(0, 0, 0, 0.307)"
     
   }}>
-      <Mainnav />
+  
     </div>
-    <br/>
-    <br/>
-    <br/><br/>
+    
     <div>
       <p className='secondary-nav'>Book for 7 nights or more to avail the workation discount <FontAwesomeIcon icon={faFlag} /></p>
     </div>
-    <div style={{display:"flex" , width:"100%"}} >
+    <div style={{display:"flex" , width:"0%"}} >
       <div className="con" style={{flex:"1"}}>
         <h3>Longer you stay,<br/> Lesser you pay!</h3>
         <p  style={{fontSize:"18px"}}>Ditch the four corners of your boring office and work from the land of the blue skies, indigo rivers and green forests. Wrap up your zoom meetings quick with our high speed wi-fi, grab some lunch on the go from our cafe and take walks around the lakeside later in the day. Sounds like a plan?</p>

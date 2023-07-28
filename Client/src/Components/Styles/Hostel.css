@@ -18,8 +18,8 @@
   }
 
   .mainofferpic{
-     width: 414px;
-     height: 78px;
+     width: 100%;
+     height: fit-content;
      
   }
   .pic1{
@@ -146,7 +146,7 @@
        
     }
   } */
-
+/* 
   @media only screen and (min-width:770px)and (max-width:1200px){
     .grid-hostel-container {
       display:-ms-flexbox;
@@ -177,10 +177,10 @@
     }
 
   }
+ */
 
 
-
-  @media only screen and (min-width:1200px){
+  /* @media only screen and (min-width:1200px){
     .grid-hostel-container {
     
       grid-template-columns: repeat(4, 1fr);
@@ -196,7 +196,7 @@
       
     }
     .pic1{
- width: 2133px;
+ width: 1233px;
       height:fit-content;
     }
-  }
+  } */

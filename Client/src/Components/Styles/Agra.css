@@ -1,4 +1,4 @@
-
+/* 
 .offerpic1{
     width: 101%;
     height:fit-contet;
@@ -122,14 +122,7 @@
         margin-top: 5px;
     }
     .mainpolicydiv{
-        display: flex;
-        gap:4.2rem;
-    }
-    /* .policymain{
-        margin-left:15%;
-        margin-right: 16%;
-    }
-     */
+ 
 
     .policy1stbox{
         display: flex;
@@ -143,10 +136,7 @@
         margin-top: 15px;
         line-height: 3px;
     }
-    /* .accordion-button.active {
-        background-color: yellow;
-      }
-      */
+   
       .mainfaq{
         display: flex;
         list-style: none;
@@ -651,4 +641,4 @@ gap: 20px;
 display:flex;
 }
 
-  }
+  }  */
