@@ -47,6 +47,7 @@ function Routesmain() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/myprofile" element={<> <Mainnav /><Profilescreen /></>} />
+          <Route path="/checkin/myprofile" element={<> <Mainnav /><Profilescreen /></>} />
           {isUserAdmin ? (
             <Route exact path="/admin" element={<> <Mainnav /><Adminscreen /><Footer /></>} />
           ) : (

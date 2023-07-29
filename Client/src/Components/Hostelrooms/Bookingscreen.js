@@ -113,7 +113,7 @@ async function onToken(token) {
     token: {
       id: token.id,
       email: token.email,
-      // Add any other relevant properties from the token object if needed
+      
     },
   };
 

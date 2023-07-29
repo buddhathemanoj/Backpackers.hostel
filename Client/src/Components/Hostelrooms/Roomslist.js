@@ -9,6 +9,8 @@ import { Modal, Button, Carousel } from "react-bootstrap";
 
 export const Roomslist = ({ room , fromdate, todate }) => {
   const [show, setShow] = useState(false);
+const [showSummaryBox, setShowSummaryBox] = useState(false);
+const handleShowSummaryBox = () => setShowSummaryBox(true);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -18,8 +20,6 @@ export const Roomslist = ({ room , fromdate, todate }) => {
 
   return (
     <div>
-         
-
 
     <div className="row boxshaows ">
       <div key={room._id} className="col-md-6">
@@ -62,6 +62,9 @@ export const Roomslist = ({ room , fromdate, todate }) => {
         </Modal.Footer>
       </Modal>
     </div>
+
+ 
     </div>
   );
 };
+

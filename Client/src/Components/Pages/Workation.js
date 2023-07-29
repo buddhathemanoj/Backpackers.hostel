@@ -98,6 +98,7 @@ export const Workation = () => {
       <br />
 
       <div>
+      {cityData.first4pics &&(
         <div className="grid-agra-container">
           <div className="grid-card-agra">
             <img className="groupmainpic" src={cityData.first4pics[0]} alt="jj" />
@@ -114,6 +115,7 @@ export const Workation = () => {
           </div>
           </div>
         </div>
+      )}
       </div>
 
      

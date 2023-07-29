@@ -98,6 +98,7 @@ export const Checkinagraweb = () => {
       <br />
 
       <div>
+      {cityData?.first4pics &&(
         <div className="grid-agra-container">
           <div className="grid-card-agra">
             <img className="groupmainpic" src={cityData.first4pics[0]} alt="jj" />
@@ -114,7 +115,9 @@ export const Checkinagraweb = () => {
           </div>
           </div>
         </div>
-      </div>
+      )}
+     
+      </div> 
 
      
      
@@ -122,7 +125,7 @@ export const Checkinagraweb = () => {
       <div className="belowimagespara">
         <p className="h1belowimages">
           {" "}
-          SleepSafari <strong>  <h1>{cityData.heading}</h1></strong>
+          SleepSafari <strong>  <h1>{cityData?.heading}</h1></strong>
         </p>
         <button className="btnviewrooms">VIEW ROOMS</button>
       </div>
@@ -130,13 +133,13 @@ export const Checkinagraweb = () => {
       <br />
       <div className="parmember">
         <p>
-         {cityData.seeless}
+         {cityData?.seeless}
         </p>
 
         {showMore ? (
           <>
             <p>
-             {cityData.seemore}
+             {cityData?.seemore}
             </p>
             <button className="btnmember" onClick={handleShowLess}>
               Show Less
@@ -210,6 +213,7 @@ export const Checkinagraweb = () => {
       <br />
       <p className="paraagrawhatwedo">WHAT WE WILL DO</p>
       <br />
+      {cityData?.whatwedopics && cityData?.whatwedoheadng && cityData?.whatwedopara && (
       <div className="grid-container-whatwedo">
         <div className="grid-what-wedo">
           <div className="bx1wedo">
@@ -248,6 +252,7 @@ export const Checkinagraweb = () => {
           </p>
         </div>
       </div>
+      )}
       <br />
       <br />
       <br />

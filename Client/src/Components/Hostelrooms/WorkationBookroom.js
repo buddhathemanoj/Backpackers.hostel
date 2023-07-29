@@ -56,7 +56,7 @@ export const WorkationBookroom = ({city}) => {
       const toDate = new Date(dates[1]);
 
       // Check if the difference between fromDate and toDate is at least 6 days
-      if (toDate.getTime() - fromDate.getTime() >= 5 * 24 * 60 * 60 * 1000) {
+      if (toDate.getTime() - fromDate.getTime() >= 6 * 24 * 60 * 60 * 1000) {
         setFromDate(fromDate);
         setToDate(toDate);
         setErrorMessage(null); // Clear any previous error message
