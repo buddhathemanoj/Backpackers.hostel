@@ -11,6 +11,7 @@ import polcy3 from '../Assets/Policies/polict3.svg'
 import polcy4 from '../Assets/Policies/policy4.svg'
 import polcy5 from '../Assets/Policies/policy5.svg'
 import polcy from '../Assets/Policies/policy6.svg'
+
 function Accordion() {
 
 
