@@ -21,6 +21,7 @@ import { Signup } from "../Userauth/Signup";
 import Profilescreen from "../Hostelrooms/Profilescreen";
 import { Adminscreen } from "../Hostelrooms/Adminscreen";
 import { Checkinagraweb } from "../Pages/checkinagraweb";
+import FullBlogPage from "../Pages/Fullblogpage";
 
 function Routesmain() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
@@ -39,13 +40,14 @@ function Routesmain() {
           <Route path="/hostels" element={<> <Mainnav /><Hostels /> <Footer /></>} />
           <Route path="/workations" element={<> <Mainnav /><Workations /> <Footer /></>} />
           <Route path="/membership" element={<> <Mainnav /><Membership /><Footer /></>} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs" element={<> <Mainnav /><Blogs /><Footer /></>} />
           {/* <Route path="/hostels/agra" element={<Agra />} /> */}
           <Route path="/checkin/:city" element={<> <Mainnav /> <Checkinagraweb /><Footer /></>} />
           <Route path="/workation/checkin/:city" element={<> <Mainnav /><Workation/> <Footer /></>} />
           <Route path="/book/:roomid" element={<Bookingscreen />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/blogs/:id" element={ <><Mainnav/><FullBlogPage /><Footer/></>} />
           <Route path="/myprofile" element={<> <Mainnav /><Profilescreen /></>} />
           <Route path="/checkin/myprofile" element={<> <Mainnav /><Profilescreen /></>} />
           {isUserAdmin ? (

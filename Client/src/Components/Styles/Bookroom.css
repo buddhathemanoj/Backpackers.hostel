@@ -28,8 +28,14 @@
     padding:20px !important
 }
 .bigimgcaro{
-    height: 400px;
-    
+    height: 300px;
+   
+}
+.butnst{
+    height: 30px !important;
+    width: 150px !important;
+    line-height: 0 !important;
+    background-color: red !important;
 }
 .Deatails {
    text-align: right !important;

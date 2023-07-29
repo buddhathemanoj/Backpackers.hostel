@@ -1,9 +1,33 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import { Tabs } from "antd";
+
 import { Table, Input } from "antd";
+import { message } from 'antd';
+
 import { Loader } from "./Loader";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 const { TabPane } = Tabs;
+
+
+
+
+const blogSchema = Yup.object().shape({
+  heading: Yup.string().required('Heading is required'),
+  synopsis: Yup.string().required('Synopsis is required'),
+  author: Yup.string().required('Author is required'),
+  minutesread: Yup.string().required('Minutes Read is required'),
+  tags: Yup.array().of(Yup.string()).required('Tags are required'),
+  blogpics: Yup.array().required('Blog pics are required'),
+  blogpicsdiscrption: Yup.array().of(Yup.string()).required('Blog pics description is required'),
+  subheading: Yup.array().of(Yup.string()).required('Subheadings are required'),
+  contentparas: Yup.array().of(Yup.string()).required('Content paragraphs are required'),
+});
+
+
 
 const user = JSON.parse(localStorage.getItem("currentUser"));
 console.log(user)
@@ -28,6 +52,9 @@ export const Adminscreen = () => {
         </TabPane>
         <TabPane tab="Add-City" key="5">
           <Addcity/>
+        </TabPane>
+        <TabPane tab="Add-Blog" key="6">
+          <AddBlogs/>
         </TabPane>
       </Tabs>
     </div>
@@ -514,3 +541,167 @@ return (
 
 }
    
+
+
+
+
+
+
+const AddBlogs = () => {
+  const initialValues = {
+    heading: '',
+    synopsis: '',
+    author: '',
+    minutesread: '',
+    tags: [],
+    blogpics: [], // Array of uploaded image files
+    blogpicsdiscrption: [],
+    subheading: [],
+    contentparas: [],
+  };
+
+  const handleAddBlog = async (values) => {
+    try {
+      // Perform any necessary data transformations here, e.g., convert image files to Base64
+
+      // Make a POST request to the backend to create the blog
+      const response = await axios.post('http://localhost:5001/api/blogs/newblog', values);
+      console.log('Blog added:', response.data);
+      message.success('Blog added successfully', 5);
+    } catch (error) {
+      console.error('Error adding blog:', error);
+      message.error('Error adding blog. Please try again.', 0);
+    }
+  };
+
+  return (
+    <div className="justify-content-center" style={{padding:'0 5% 0 10%'}}>
+      <h2>Add a Blog</h2>
+      <Formik initialValues={initialValues} validationSchema={blogSchema} onSubmit={handleAddBlog}>
+        {({ values, handleSubmit, setFieldValue }) => (
+          <Form>
+            <div className="row">
+              <div className="col-md-5">
+                <div className="text-center">
+                  <Field type="text" className="form-control" name="heading" placeholder="Blog Heading" />
+                  <ErrorMessage name="heading" component="div" className="error" />
+                  <Field type="text" className="form-control" name="synopsis" placeholder="Synopsis" />
+                  <ErrorMessage name="synopsis" component="div" className="error" />
+                  <Field type="text" className="form-control" name="author" placeholder="Author" />
+                  <ErrorMessage name="author" component="div" className="error" />
+                  <Field type="text" className="form-control" name="minutesread" placeholder="Minutes Read" />
+                  <ErrorMessage name="minutesread" component="div" className="error" />
+                </div>
+              </div>
+              <div className="col-md-5">
+              <div >
+  <FieldArray name="tags">
+    {({ push, remove }) => (
+      <div>
+        {values.tags.map((tag, index) => (
+          <div key={index}>
+            <Field type="text" className="form-control" name={`tags.${index}`} placeholder={`Tag ${index + 1}`} />
+            <ErrorMessage name={`tags.${index}`} component="div" className="error" />
+            {index > 0 && <button type="button" onClick={() => remove(index)}>Remove Tag</button>}
+          </div>
+        ))}
+        {values.tags.length === 0 && (
+          <Field type="text" className="form-control" name={`tags.${0}`} placeholder="Tag 1" />
+        )}
+        <button  style={{  border:'none'}} className="btn-primary" type="button" onClick={() => push('')}>Add Tag</button>
+      </div>
+    )}
+  </FieldArray>
+  <br/>
+  {/* Add React Dropzone for image uploads */}
+  <FieldArray name="blogpics">
+    {({ push, remove }) => (
+      <div>
+        {values.blogpics.map((url, index) => ( // Change 'file' to 'url'
+          <div key={index}>
+            <input
+              className="form-control"
+              type="text" // Change the input type to 'text'
+              value={url} // Use 'url' from the array instead of 'file'
+              onChange={(e) => setFieldValue(`blogpics.${index}`, e.target.value)} // Update the URL in the array
+            />
+            <ErrorMessage name={`blogpics.${index}`} component="div" className="error" />
+            {index > 0 && <button type="button" onClick={() => remove(index)}>Remove Image</button>}
+          </div>
+        ))}
+        {values.blogpics.length === 0 && (
+          <input
+            className="form-control"
+            type="text" // Change the input type to 'text'
+            value={values.blogpics[0]} // Use 'url' from the array instead of 'file'
+            onChange={(e) => setFieldValue('blogpics.0', e.target.value)} // Update the URL in the array
+            placeholder="Image URL 1"
+          />
+        )}
+        <button  style={{  border:'none'}} className="btn-primary" type="button" onClick={() => push('')}>Add Image</button>
+      </div>
+    )}
+  </FieldArray>
+</div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-10">
+                <h2>Blog Content</h2>
+                <FieldArray name="subheading">
+  {({ push, remove }) => (
+    <div>
+      {values.subheading.map((subheading, index) => (
+        <div key={index}>
+          <Field type="text" className="form-control" name={`subheading.${index}`} placeholder={`Subheading ${index + 1}`} />
+          <ErrorMessage name={`subheading.${index}`} component="div" className="error" />
+          {index > 0 && <button type="button" onClick={() => remove(index)}>Remove Subheading</button>}
+        </div>
+      ))}
+      {values.subheading.length === 0 && (
+        <Field type="text" className="form-control" name={`subheading.${0}`} placeholder="Subheading 1" />
+      )}
+      <button  style={{  border:'none'}} className="btn-primary" type="button" onClick={() => push('')}>Add Subheading</button>
+    </div>
+  )}
+</FieldArray>
+<br />
+<FieldArray name="contentparas">
+  {({ push, remove }) => (
+    <div>
+      {values.contentparas.map((contentpara, index) => (
+        <div key={index}>
+          <ReactQuill
+            value={contentpara}
+            onChange={(value) => setFieldValue(`contentparas.${index}`, value)}
+            placeholder={`Content Paragraph ${index + 1}`}
+          />
+          <ErrorMessage name={`contentparas.${index}`} component="div" className="error" />
+          {index > 0 && <button type="button" onClick={() => remove(index)}>Remove Content Paragraph</button>}
+        </div>
+      ))}
+      {values.contentparas.length === 0 && (
+        <ReactQuill
+          value={values.contentparas[0]}
+          onChange={(value) => setFieldValue('contentparas.0', value)}
+          placeholder="Content Paragraph 1"
+        />
+      )}
+      <button  style={{  border:'none'}} className="btn-primary" type="button" onClick={() => push('')}>Add Content Paragraph</button>
+    </div>
+  )}
+</FieldArray>
+              </div>
+            </div>
+            <br/>
+            <div className="text-right" style={{padding:'0 18% 0 0'}}>
+              <button style={{ backgroundColor:'green', border:'none'}} className="btn btn-primary" type="submit" onClick={handleSubmit}>Add Blog</button>
+            </div>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
+};
+
+export default AddBlogs;

@@ -115,7 +115,7 @@ export function Mybookings(){
                   <h4>  {Rooms[index].name}</h4>
 
                  {Rooms[index]?.imageurls && Rooms[index].imageurls.length > 0 && (
-                      <img src={Rooms[index].imageurls[0]} alt="Room" style={{ maxWidth: "320px" }} />
+                      <img src={Rooms[index].imageurls[0]} alt="Room" style={{maxWidth:'330px'}} />
                     )}
                  
                    
@@ -134,7 +134,7 @@ export function Mybookings(){
                     <p><b>Status:</b> {booking.status=='booked' ? <Tag color="green">CONFIRMED</Tag>  : <Tag color="red">CANCELLED</Tag> }</p>
                     {booking.status === 'booked' && ( 
           <div className='text-right'>
-            <button className='btn btn-primary' onClick={() => { cancelbooking(booking._id, booking.roomid) }}>Cancel Booking</button>
+            <button className='btn btn-primary butnst' onClick={() => { cancelbooking(booking._id, booking.roomid) }}>Cancel Booking</button>
           </div>
         )}
                   </div>

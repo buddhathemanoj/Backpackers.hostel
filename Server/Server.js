@@ -8,9 +8,10 @@ const bookingsRoute =require('./Route/bookingsRoute')
 const cityRoute = require('./Route/cityRoute')
 const checkinRoute = require('./Route/CheckinRoute')
 const WorkationCheckinRoute = require('./Route/WorkcheckinRoute')
+const BlogRoute = require('./Route/blogRoute')
 app.use(cors("*"));
 app.use(express.json())
-
+app.use('/api/blogs', BlogRoute )
 app.use('/api/rooms', rooomsRoute )
 app.use('/api/users', usersRoute )
 app.use ('/api/bookings' , bookingsRoute)

@@ -121,7 +121,7 @@
         margin-left: 5px;
         margin-top: 5px;
     }
-    .mainpolicydiv{
+ 
  
 
     .policy1stbox{
@@ -260,9 +260,9 @@ line-height: 10px;
   .roundflex{
     gap: 20px;
     display:flex;
-  }
+  } */
 
-
+/* 
   @media only screen and (max-width: 767px) {
 
 

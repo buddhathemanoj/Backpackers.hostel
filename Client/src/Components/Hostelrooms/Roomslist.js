@@ -1,7 +1,8 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import "../Styles/Bookroom.css";
 import { Modal, Button, Carousel } from "react-bootstrap";
 
@@ -41,11 +42,11 @@ const handleShowSummaryBox = () => setShowSummaryBox(true);
       </div>
 
       <Modal show={show} onHide={handleClose} size="lg">
-        <Modal.Header closeButton>
-          <Modal.Title>{room.name}</Modal.Title>
-        </Modal.Header>
+        
         <Modal.Body>
-          <Carousel key={room._id}>
+          <div className="row ">
+            <div className="col-md-6">
+ <Carousel key={room._id}>
             {room.imageurls.map((url) => {
               return (
                 <Carousel.Item>
@@ -54,6 +55,34 @@ const handleShowSummaryBox = () => setShowSummaryBox(true);
               );
             })}
           </Carousel>
+            </div>
+            <div key={room._id} className="col-md-6">
+             <h3>{room.name}</h3> 
+             <hr/>
+             <h6>Amenities</h6>
+           
+             <hr/>
+             <div className="d-flex" >
+             <ul style={{ listStyle: 'none', padding: 0 ,marginRight:'30px'}}>
+  {room.amenity.slice(0, room.amenity.length / 2).map((amenity, index) => (
+    <li key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
+      <FontAwesomeIcon style={{ marginRight: '5px' }} icon={faCheckCircle} />
+      {amenity}
+    </li>
+  ))}
+</ul>
+      <ul style={{listStyle:'none', padding: 0 }}>
+        {room.amenity.slice(room.amenity.length / 2).map((amenity, index) => (
+          <li key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}> <FontAwesomeIcon style={{ marginRight: '5px' }} icon={faCheckCircle} />{amenity}</li>
+        ))}
+      </ul>
+             </div>
+             
+    </div>
+    
+
+          </div>
+         
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
